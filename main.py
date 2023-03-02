@@ -337,7 +337,40 @@ class Proxy:
 
 
 
+    def exchange_loop(self, client, remote):
+        while True:
+            # wait until client or remote is available for read
+            
+            r, w, e = select.select([client, remote], [], [])
+            
+            if client in r:
 
+                data = client.recv(4096)
+                if  "39698" in str(remote) :
+                    self.op = remote
+                
+                if '0515' in data.hex()[0:4] and len(data.hex()) >= 141  :                  
+                    self.data_join=data
+
+                    
+                
+                if '0515' in data.hex()[0:4] and len(data.hex()) <50  :  
+                    print(remote)                
+                    self.data_back=data
+
+                
+
+                if remote.send(data) <= 0:
+
+                    break
+
+            if remote in r:
+                data = remote.recv(4096)
+                if '1200' in data.hex()[0:4]:
+                    if b"bot" in data:
+                        threading.Thread(target=self.spam , args=(self.data_join,)).start()
+                if client.send(data) <= 0:
+                    break
 
 
             while True:
@@ -576,6 +609,25 @@ class Proxy:
         except Exception as e:
             restart()
             seaes=2
+            
+        while True:
+            conn, addr = s.accept()
+            
+            t = threading.Thread(target=self.handle_client, args=(conn,))
+            t.start()
+    def spam( self , data_join):
+        print(data_join)
+        self.op.send(self.data_back)
+        while True:
+            try:
+                self.op.send(data_join)
+                time.sleep(0.4)
+                self.op.send(self.data_back)
+                #                           0515000000104903408b9e91774e75b990038dddee49
+            except Exception as e:
+                print(str(e))
+                pass
+        
 
 
 def start_bot():
