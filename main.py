@@ -32,8 +32,8 @@ recordmode= False
 sendpackt=False
 global vares
 vares = 0
-spy = True
-inviteD=True
+spy = False
+inviteD=False
 inviteE=False
 global statues
 statues= True
