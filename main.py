@@ -351,7 +351,7 @@ class Proxy:
                     global s
                     global x
                     global serversocket
-                    global isconn
+                    global isconn ,inviteD
                     if client in r:
 
 
@@ -517,6 +517,10 @@ class Proxy:
                                 # if '1603' in dataS.hex()[:4]:
                                 #     print(dataC)
                                 #start:cs :
+                                if '1200' in dataS.hex()[0:4] and '2f696e76' in dataS.hex()[0:900] :
+                                    inviteD =True
+                                if '1200' in dataS.hex()[0:4] and '2f2d696e76' in dataS.hex()[0:900] :
+                                    inviteD =False
                                 if '1200' in dataS.hex()[0:4] and '2f6c766c' in dataS.hex()[0:900] :
                                     increase =True
                                     print("bb")
@@ -547,12 +551,12 @@ class Proxy:
                                     client.send(dataS)
                                     invite.send(b'\x05\x15\x00\x00\x00 \xf3\x7f\x06i,\x9d\xbe$Z\xf3|\xb3\xdfO\xc5\xf4\x8bT\x8b\xf7Y\x1b\xe3\x8cY \x93:\x88\xa6\xfd\\')
 
-                                if '1200' in dataS.hex()[0:4] and '2f73' in dataS.hex()[0:900] and spaming:
+                                if '1200' in dataS.hex()[0:4] and '2f7370616d' in dataS.hex()[0:900] and spaming:
                                     client.send(dataS)
 
                                     recordmode = True
 
-                                if '1200' in dataS.hex()[0:4] and '2f66' in dataS.hex()[0:900]:
+                                if '1200' in dataS.hex()[0:4] and '2f2d7370616d' in dataS.hex()[0:900]:
                                     client.send(dataS)
 
 
