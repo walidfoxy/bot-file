@@ -43,6 +43,7 @@ spaming =True
 import os
 import sys
 def restart():
+    global Proxy
     Proxy().runs('127.0.0.1',3000)
     """print("arvg ",sys.argv)
     print("exutable :" ,sys.executable)
