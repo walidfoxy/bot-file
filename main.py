@@ -42,24 +42,9 @@ packet =b''
 spaming =True
 import os
 import sys
-def restart():
-    global Proxy
-    Proxy().runs('127.0.0.1',3000)
-    """print("arvg ",sys.argv)
-    print("exutable :" ,sys.executable)
-    print("restarting script Now ! ! ")
-    os.execv(sys.executable,['python'] +sys.argv)"""
-def spam(server,packet):
-    while True:
 
-
-        time.sleep(0.015)
-
-
-        server.send(packet)
-        if  statues == False:
-
-            break
+    
+           
 
 def destroy(remote,dataC):
 
