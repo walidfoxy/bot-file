@@ -574,4 +574,4 @@ def start_bot():
     except Exception as e:
         restart()
         sea=2
-start_bot()
+
