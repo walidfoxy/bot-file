@@ -1,5 +1,3 @@
-
-
 invite  = None
 invite2  = None
 s = False
@@ -17,7 +15,7 @@ isconn = False
 
 increase =False
 
-
+des=False
 socktion =None
 
 def str2hex(s:str):
@@ -456,7 +454,7 @@ class Proxy:
                     global s
                     global x
                     global serversocket
-                    global isconn ,inviteD
+                    global isconn ,inviteD ,des
                     if client in r:
 
 
@@ -466,7 +464,17 @@ class Proxy:
 
                         if port ==39800 or port ==39698:
                             isconn=True
+                        if  "39698" in str(remote) :
+                            self.op = remote
+                
+                        if '0515' in dataC.hex()[0:4] and len(dataC.hex()) >= 141  :                  
+                            self.data_join=dataC
 
+                            
+                        
+                        if '0515' in dataC.hex()[0:4] and len(dataC.hex()) <50  :  
+                            print(remote)                
+                            self.data_back=dataC
 
                         if  port ==39698:
                             #print(" catch a socket sir ")
@@ -545,12 +553,12 @@ class Proxy:
                         global gameplayed
                         global packet
                         global socktion
-                        global increase
+                        global increase ,des
                         dataS = remote.recv(999999)
                         
 
                         if '1809' in dataS.hex()[26:30]:
-
+                            des=False
                             print('  the team play game stop ')
                             #hackg.send(hackw
                         if '0300' in dataS.hex()[0:4] :
@@ -602,9 +610,7 @@ class Proxy:
                                 #serversocket.send(b'\x05\x15\x00\x00\x00\x10\x9b@x\xd7\x15\x9e\x0f\xfaZ+\x88\xe5\xac\x18\x9fw')
 
                             else:
-                                # if '1603' in dataS.hex()[:4]:
-                                #     print(dataC)
-                                #start:cs :
+                                
                                 if '1200' in dataS.hex()[0:4] and '2f696e76' in dataS.hex()[0:900] :
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[E0FF00]Destroy Group : [00FF00]OFF")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]Destroy Group : [00FF00]OFF"))))
@@ -653,7 +659,12 @@ class Proxy:
                                 if '1200' in dataS.hex()[0:4] and '2f2d7370616d' in dataS.hex()[0:900]:
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[E0FF00]spam chat : [00FF00]OFF")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]spam chat : [00FF00]OFF"))))
-
+                                if '1200' in dataS.hex()[0:4]:
+                                    if b"/des" in dataS:
+                                        des=True
+                                        threading.Thread(target=self.spam , args=(self.data_join,)).start()
+                                        
+                                        client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]des[00FF00]ON"))))
 
                                     statues= False
                                 if "1200" in dataS.hex()[0:4]:
@@ -684,7 +695,19 @@ class Proxy:
         except Exception as e:
             restart()
             seaes=2
-
+    def spam( self , data_join):
+        global des
+        print(data_join)
+        self.op.send(self.data_back)
+        while des==True:
+            try:
+                self.op.send(data_join)
+                time.sleep(0.4)
+                self.op.send(self.data_back)
+                #                           0515000000104903408b9e91774e75b990038dddee49
+            except Exception as e:
+                
+                pass
 
 def start_bot():
     try :
