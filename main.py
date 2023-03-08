@@ -556,11 +556,14 @@ class Proxy:
                         global increase ,des
                         dataS = remote.recv(999999)
                         
-
-                        if '1809' in dataS.hex()[26:30]:
+                        print("respons ---->[{}]".format(dataS.hex()[26:30]))
+                        if '1809' in dataS.hex()[26:30] or "1802" in dataS.hex()[26:30] or "1808" in dataS.hex()[26:30]:
                             des=False
-                            print('  the team play game stop ')
+                            print(dataC.hex()[0:4])
+                            print('  the team ')
                             #hackg.send(hackw
+                        
+
                         if '0300' in dataS.hex()[0:4] :
                             #print('yes')
                             C = client
@@ -711,7 +714,7 @@ class Proxy:
 
 def start_bot():
     try :
-        Proxy().runs('127.0.0.1',3000)
+        Proxy().runs('192.168.1.38',3000)
     except Exception as e:
         restart()
         sea=2
