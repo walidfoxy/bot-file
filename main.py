@@ -702,7 +702,7 @@ class Proxy:
     def spam( self , data_join):
         global des
         print(data_join)
-        self.op.send(self.data_back)
+        
         while des==True:
             try:
                 self.op.send(data_join)
