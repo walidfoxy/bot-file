@@ -631,7 +631,7 @@ class Proxy:
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]LEVEL UP : [00FF00]OFF"))))
                                     print("bb")
                                 #/back :
-                                if '1200' in dataS.hex()[0:4] and '2f52' in dataS.hex()[0:900] :
+                                if '1200' in dataS.hex()[0:4] and '2f6261636b' in dataS.hex()[0:900] :
 
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00]return ok!")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00]return ok!"))))
