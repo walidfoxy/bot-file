@@ -1,4 +1,5 @@
 
+
 invite  = None
 invite2  = None
 s = False
@@ -19,7 +20,146 @@ increase =False
 
 socktion =None
 
+def str2hex(s:str):
+    return ''.join([hex(ord(c))[2:].zfill(2) for c in s])    
 
+def get_info(user_id):
+    id = user_id
+    cookies = {
+        '_ga': 'GA1.1.2123120599.1674510784',
+        '_fbp': 'fb.1.1674510785537.363500115',
+        '_ga_7JZFJ14B0B': 'GS1.1.1674510784.1.1.1674510789.0.0.0',
+        'source': 'mb',
+        'region': 'MA',
+        'language': 'ar',
+        '_ga_TVZ1LG7BEB': 'GS1.1.1674930050.3.1.1674930171.0.0.0',
+        'datadome': '6h5F5cx_GpbuNtAkftMpDjsbLcL3op_5W5Z-npxeT_qcEe_7pvil2EuJ6l~JlYDxEALeyvKTz3~LyC1opQgdP~7~UDJ0jYcP5p20IQlT3aBEIKDYLH~cqdfXnnR6FAL0',
+        'session_key': 'efwfzwesi9ui8drux4pmqix4cosane0y',
+    }
+
+    headers = {
+        'Accept-Language': 'en-US,en;q=0.9',
+        'Connection': 'keep-alive',
+        # 'Cookie': '_ga=GA1.1.2123120599.1674510784; _fbp=fb.1.1674510785537.363500115; _ga_7JZFJ14B0B=GS1.1.1674510784.1.1.1674510789.0.0.0; source=mb; region=MA; language=ar; _ga_TVZ1LG7BEB=GS1.1.1674930050.3.1.1674930171.0.0.0; datadome=6h5F5cx_GpbuNtAkftMpDjsbLcL3op_5W5Z-npxeT_qcEe_7pvil2EuJ6l~JlYDxEALeyvKTz3~LyC1opQgdP~7~UDJ0jYcP5p20IQlT3aBEIKDYLH~cqdfXnnR6FAL0; session_key=efwfzwesi9ui8drux4pmqix4cosane0y',
+        'Origin': 'https://shop2game.com',
+        'Referer': 'https://shop2game.com/app/100067/idlogin',
+        'Sec-Fetch-Dest': 'empty',
+        'Sec-Fetch-Mode': 'cors',
+        'Sec-Fetch-Site': 'same-origin',
+        'User-Agent': 'Mozilla/5.0 (Linux; Android 11; Redmi Note 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Mobile Safari/537.36',
+        'accept': 'application/json',
+        'content-type': 'application/json',
+        'sec-ch-ua': '"Chromium";v="107", "Not=A?Brand";v="24"',
+        'sec-ch-ua-mobile': '?1',
+        'sec-ch-ua-platform': '"Android"',
+        'x-datadome-clientid': '6h5F5cx_GpbuNtAkftMpDjsbLcL3op_5W5Z-npxeT_qcEe_7pvil2EuJ6l~JlYDxEALeyvKTz3~LyC1opQgdP~7~UDJ0jYcP5p20IQlT3aBEIKDYLH~cqdfXnnR6FAL0',
+    }
+
+    json_data = {
+        'app_id': 100067,
+        'login_id': f'{id}',
+        'app_server_id': 0,
+    }
+
+    res = requests.post('https://shop2game.com/api/auth/player_id_login', cookies=cookies, headers=headers, json=json_data)
+
+    response = res.json()
+    try : 
+        name=response['nickname']
+    except:
+        name="check id"
+
+    return name 
+def convert_to_bytes(input_string):
+    # replace non-hexadecimal character with empty string
+    cleaned_string = input_string[:231] + input_string[232:]
+    # convert cleaned string to bytes
+    output_bytes = bytes.fromhex(cleaned_string)
+    return output_bytes
+def gen_msgv2(packet  , replay):
+    
+    replay  = replay.encode('utf-8')
+    replay = replay.hex()
+    
+
+    hedar = packet[0:8]
+    packetLength = packet[8:10] #
+    paketBody = packet[10:32]
+    pyloadbodyLength = packet[32:34]#
+    pyloadbody2= packet[34:60]
+    
+    pyloadlength = packet[60:62]#
+    pyloadtext  = re.findall(r'{}(.*?)28'.format(pyloadlength) , packet[50:])[0]
+    pyloadTile = packet[int(int(len(pyloadtext))+62):]
+    
+    
+    NewTextLength = (hex((int(f'0x{pyloadlength}', 16) - int(len(pyloadtext)//2) ) + int(len(replay)//2))[2:])
+    if len(NewTextLength) ==1:
+        NewTextLength = "0"+str(NewTextLength)
+        
+    NewpaketLength = hex(((int(f'0x{packetLength}', 16) - int((len(pyloadtext))//2) ) ) + int(len(replay)//2) )[2:]
+    NewPyloadLength = hex(((int(f'0x{pyloadbodyLength}', 16) - int(len(pyloadtext)//2))  )+ int(len(replay)//2) )[2:]
+
+    finallyPacket = hedar + NewpaketLength +paketBody + NewPyloadLength +pyloadbody2+NewTextLength+ replay + pyloadTile
+    
+    return str(finallyPacket)
+
+
+
+
+def getinfobyid(packet , user_id , client):
+    
+    load = gen_msgv2(packet , "[00FF00]Loading....")
+    load2 =gen_msgv2_clan(packet , "[00FF00]Loading....") 
+    for i in range(4):
+        time.sleep(1.5)
+        client.send(bytes.fromhex(load))
+        client.send(bytes.fromhex(load2))
+    
+    name = get_info(user_id)
+    if "id" in name:
+        pyload_3 = gen_msgv2_clan(packet , f"[00FF00]{name}")
+        client.send(bytes.fromhex(pyload_3))
+        pyload_3 = gen_msgv2(packet , f"[00FF00]{name}")
+        client.send(bytes.fromhex(pyload_3))
+    else:
+        pyload_1 = str(gen_msgv2_clan(packet , f"[FF0000]username --> {name}"))
+        client.send(bytes.fromhex(pyload_1))
+        pyload_1 = str(gen_msgv2(packet , f"[FF0000]username --> {name}"))
+        client.send(bytes.fromhex(pyload_1))
+        pyload_2 = gen_msgv2(packet , f"[00FF00]{name}")
+        client.send(bytes.fromhex(pyload_2))
+        pyload_2 = gen_msgv2(packet , f"[00FF00]{name}")
+        client.send(bytes.fromhex(pyload_2))
+        
+
+
+
+def gen_msgv2_clan(packet  , replay):
+    
+    replay  = replay.encode('utf-8')
+    replay = replay.hex()
+
+    hedar = packet[0:8]
+    packetLength = packet[8:10] #
+    paketBody = packet[10:32]
+    pyloadbodyLength = packet[32:34]#
+    pyloadbody2= packet[34:64]
+    pyloadlength = packet[64:66]#
+    pyloadtext  = re.findall(r'{}(.*?)28'.format(pyloadlength) , packet[50:])[0]
+    pyloadTile = packet[int(int(len(pyloadtext))+66):]
+    
+
+    NewTextLength = (hex((int(f'0x{pyloadlength}', 16) - int(len(pyloadtext)//2) ) + int(len(replay)//2))[2:])
+    if len(NewTextLength) ==1:
+        NewTextLength = "0"+str(NewTextLength)
+    NewpaketLength = hex(((int(f'0x{packetLength}', 16) - int(len(pyloadtext)//2) ) - int(len(pyloadlength))) + int(len(replay)//2) + int(len(NewTextLength)))[2:]
+    NewPyloadLength = hex(((int(f'0x{pyloadbodyLength}', 16) - int(len(pyloadtext)//2)) -int(len(pyloadlength)) )+ int(len(replay)//2) + int(len(NewTextLength)))[2:]
+    
+    
+    finallyPacket = hedar + NewpaketLength +paketBody + NewPyloadLength +pyloadbody2+NewTextLength+ replay + pyloadTile
+
+    return finallyPacket
 invite= None
 
 
@@ -43,8 +183,21 @@ spaming =True
 import os
 import sys
 
-    
-           
+def restart():
+    global Proxy
+    Proxy().runs("127.0.0.1" , 3000)
+
+def spam(server,packet):
+    while True:
+
+
+        time.sleep(0.015)
+
+
+        server.send(packet)
+        if  statues == False:
+
+            break
 
 def destroy(remote,dataC):
 
@@ -75,7 +228,7 @@ def enter_game_and_RM():
         print(f'number of gameplayed ![{gameplayed}]')
         C.send(data)
         listt.remove(data)
-    time.sleep(10)
+    time.sleep(15)
 
     print("start the game ....")
 
@@ -99,40 +252,6 @@ def break_the_matchmaking(server):
 
     t = threading.Thread(target=enter_game_and_RM, args=())
     t.start()
-
-def control():
-    pass
-
-
-def sendgame(client):
-    for data in serverslist :
-
-        print("sending! ...\n")
-        client.send(data)
-        time.sleep(15)
-def ifnotracing(server):
-    while True :
-        time.sleep(0.090)
-        server.send(bytes.fromhex(Yony))
-        if s ==True:
-            print('breaked')
-            break
-
-def timer():
-    num = 1
-    while True:
-        time.sleep(1)
-        num = num+1
-        if num ==2:
-            invite2.send(b"\x12\x15\x00\x00\x00@\xc4\xdaZ\x93\xfa\xc60\x07\x1a\x08\xb5\x11\xde\x14x\x7f?}B\xf9\xf0\xc4\xe9\xa1\x9f\xd0\x8e#v\xccg\xa2\xb1@\xc2\xc1\x81\x0b\xeeeEf\xd6T\xf45\xd4\xd1\xd8\xdb\x0e\xd8\xe1\x0f\xf5\xff\x86\xe4\x8b'\x9d\x17\x98\x89")
-
-        if num >=3:
-            invite2.send(b'\x12\x15\x00\x00\x00P\xe7a\xce\x8f\x9d,;\xab\xe9hM\xeb\x83\xe01\xdc=\x18y\x85.\xc7Y&\x9c\x03^\x13\xcf\xd3\xa8\xb0\x0c>\x0c\xe6\xc40\x10\xc5\xfe\xae/}G\xe2\xc7\xe8z\xb2,\xb6\xd4\t\x9c":\xdd\xab\xc4{I\xf0\x1d)K\x88\xa2\xf9\xb7\tXx1\x99pE\\]?')
-
-        print(f'time elsaped [{num}]')
-        if num ==10 :
-            break
-
 
 
 import time
@@ -415,11 +534,6 @@ class Proxy:
                             t.start()
 
 
-                        #   time.sleep(0.10)
-                        #  print(f'dataC  packet {dataC.hex()}\n\n')
-                        # if b'POST /api/LoginUser?UserId' in dataC:
-                        #  remote.send(b'POST /api/LoginUser?UserId=UQRLAAWITYT&keynumber=old&PrivateUID=Ptbdetetqkw&UserApiLang=en_US HTTP/1.1\r\nContent-Type: application/x-www-form-urlencoded\r\nUser-Agent: Dalvik/2.1.0 (Linux; U; Android 7.1.2; ASUS_Z01QD Build/QKQ1.190825.002)\r\nHost: 195.154.17.112:5005\r\nConnection: Keep-Alive\r\nAccept-Encoding: gzip\r\nContent-Length: 0\r\n\r\n')
-
                         if remote.send(dataC) <= 0:
                             break
                     if remote in r:
@@ -433,19 +547,7 @@ class Proxy:
                         global socktion
                         global increase
                         dataS = remote.recv(999999)
-                        #    if '0300' in dataS.hex()[:4]:
-
-
-                        # print(f'ServerResponse --->[{dataS}]\n')
-                        #      if '1200' in dataS.hex()[:4]:
-                        #          print(dataC)
-
-
-                        #  if '0500' in dataS.hex()[:4]:
-                        #   print(dataC.hex())
-
-                        #print(f'[{port}] <--- RESPONSE :{dataS.hex()}\n\n')
-                        # time.sleep(1)
+                        
 
                         if '1809' in dataS.hex()[26:30]:
 
@@ -504,50 +606,66 @@ class Proxy:
                                 #     print(dataC)
                                 #start:cs :
                                 if '1200' in dataS.hex()[0:4] and '2f696e76' in dataS.hex()[0:900] :
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[E0FF00]Destroy Group : [00FF00]OFF")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]Destroy Group : [00FF00]OFF"))))
                                     inviteD =True
                                 if '1200' in dataS.hex()[0:4] and '2f2d696e76' in dataS.hex()[0:900] :
                                     inviteD =False
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[E0FF00]Destroy Group : [00FF00]ON")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]Destroy Group : [00FF00]ON"))))                                  
                                 if '1200' in dataS.hex()[0:4] and '2f6c766c' in dataS.hex()[0:900] :
                                     increase =True
                                     print("bb")
-                                    client.send(dataS)
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[E0FF00]LEVEL UP : [00FF00]ON")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]LEVEL UP : [00FF00]ON"))))
                                 #stop:cs :
                                 if '1200' in dataS.hex()[0:4] and '2f2d6c766c' in dataS.hex()[0:900] :
                                     increase =False
-                                    client.send(dataS)
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[E0FF00]LEVEL UP : [00FF00]OFF")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]LEVEL UP : [00FF00]OFF"))))
                                     print("bb")
                                 #/back :
-                                if '1200' in dataS.hex()[0:4] and '2f62' in dataS.hex()[0:900] :
+                                if '1200' in dataS.hex()[0:4] and '2f52' in dataS.hex()[0:900] :
 
-                                    client.send(dataS)
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00]return ok!")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00]return ok!"))))
                                     socktion.send(packet)
                                 #  /5
                                 if '1200' in dataS.hex()[0:4] and '6635' in dataS.hex()[0:900]:
-
-
-                                    #   print("cmake 5 in squad sir ")
-                                    # invite.send(bytes.fromhex('05150000001000000000000000000000000000000000'))
-                                    client.send(dataS)
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00]send 5 Mode ok!")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00]send 5 Mode ok!"))))
                                     invite.send(bytes.fromhex("0503000001d01fb578313150905babcef51dd24ed75fd0a24b024bd1429646114bc22e604afd35a96fbc48710b2d9cfec4378287ec829e33a78608fd2dd138d4d24a19c00fbfdc9f15c77ff86d638b34de95bd886e3075e82d3f4a3888f9b6943463022c43fb90e229f0eaf8a788f6f766d891d99eb2c37b277144923212810b3c80d1c521790154ed270f5241adc136f2a22816e0bc84fcaf79386b27559de966aa788c184d35bbbfaa03a5f08746f8db0e73b2c91ec4515d61f689a0cad30a7cbd6c325151e879dabc43d506b3240abe41bc0d6b4416c18f68ef4af2d04c381be6bf586f6b25727c0c85c03a579137e4a6c602ef6d833dabdab3eba3a5266e5a4731fbfb1720b60f124cd8fd4fa26cc7a9fb6e0a218d8809f57b204d22fa97520aeb99007c7b71c709e53ecc688c9963e0786909152fa93f06dc93085468dae34e1609f33f7dee228fb058c6efd6846b50ac54db0aebb8f5bc2f6751f9e2886dbab41cbaf5a1d8cd88e6c13a2a2a56b613a2d32179dc3f781493a5027322ac0cb1a2d3c79d49fb12ed26230e1561df43d315a27be17b5debdba757803305252b5443f3d77cd319dde9c49a72c636d93d02bdd9597168f378aa6e41d0fd545abf8bc0883f3dac11ea27166683c7111a0f329bf6b6a5"))
 
                                 #/4
                                 #   invite.send(b'\x05\x15\x00\x00\x00\x104\xc3\xa2"\xdf\xc4\x8c\x93\x81|\xc4\x8d\xe5\xe8\xbe\xb1')
                                 if '1200' in dataS.hex()[0:4] and '6634' in dataS.hex()[0:900]:
                                     #    print("cmake 4 in squad sir ")
-                                    client.send(dataS)
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00]send 4 Mode ok!")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00]send 4 Mode ok!"))))
                                     invite.send(b'\x05\x15\x00\x00\x00 \xf3\x7f\x06i,\x9d\xbe$Z\xf3|\xb3\xdfO\xc5\xf4\x8bT\x8b\xf7Y\x1b\xe3\x8cY \x93:\x88\xa6\xfd\\')
 
                                 if '1200' in dataS.hex()[0:4] and '2f7370616d' in dataS.hex()[0:900] and spaming:
-                                    client.send(dataS)
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[E0FF00]spam chat : [00FF00]ON")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]spam chat : [00FF00]ON"))))
 
                                     recordmode = True
 
                                 if '1200' in dataS.hex()[0:4] and '2f2d7370616d' in dataS.hex()[0:900]:
-                                    client.send(dataS)
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[E0FF00]spam chat : [00FF00]OFF")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]spam chat : [00FF00]OFF"))))
 
 
                                     statues= False
-
+                                if "1200" in dataS.hex()[0:4]:
+                        
+                                    if b"id" in dataS:
+                                        print(dataS.hex())
+                                        try:
+                                            user_id= (bytes.fromhex(re.findall(r'6964(.*?)28' , dataS.hex()[50:])[0])).decode("utf-8")
+                                            print(user_id)
+                                            threading.Thread(target=getinfobyid , args=(dataS.hex() , user_id , client)).start()  
+                                        except:
+                                            pass
 
                                 if  '0500' in dataS.hex()[0:4] and hide == True  :
                                     socktion =client
@@ -570,8 +688,7 @@ class Proxy:
 
 def start_bot():
     try :
-        Proxy().runs('127.0.0.1',3000)
+        Proxy().runs('192.168.1.38',3000)
     except Exception as e:
         restart()
         sea=2
-
