@@ -65,7 +65,7 @@ def get_info(user_id):
     try : 
         name=response['nickname']
     except:
-        name="check id"
+        name=response
 
     return name 
 def convert_to_bytes(input_string):
