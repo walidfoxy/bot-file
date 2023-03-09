@@ -74,6 +74,26 @@ def convert_to_bytes(input_string):
     # convert cleaned string to bytes
     output_bytes = bytes.fromhex(cleaned_string)
     return output_bytes
+def gen_packet(data : str):
+    PacketLenght = data[7:10]
+    PacketHedar1= data[10:32]
+    PayLoad= data[32:34]
+    NameLenghtAndName=re.findall('1b12(.*)1a02' , data)[0]
+    Name = NameLenghtAndName[2:]
+    NameLenght = NameLenghtAndName[:2]
+
+    NewName="5b46463030305d4d6f64652042792040594b5a205445414d"
+    NewNameLenght = len(NewName)//2
+
+    NewPyloadLenght=int(int('0x'+PayLoad , 16) - int("0x"+NameLenght , 16))+int(NewNameLenght)
+    NewPacketLenght = (int('0x'+PacketLenght , 16)-int('0x'+PayLoad , 16)) + NewPyloadLenght
+
+    packet = data.replace(Name , str((NewName)))
+    packet = packet.replace(str('1b12'+NameLenght) , '1b12'+str(hex(NewNameLenght)[2:]))
+    packet = packet.replace(PayLoad , str(hex(NewPyloadLenght)[2:]))
+    packet = packet.replace(PacketLenght[0] , str(hex(NewPacketLenght)[2:]) )
+    
+    return packet
 def gen_msgv2(packet  , replay):
     
     replay  = replay.encode('utf-8')
@@ -684,7 +704,7 @@ class Proxy:
 
                                         hide =True
                                     if len(dataS.hex())>=31:
-                                        packet = dataS
+                                        packet = bytes.fromhex(gen_packet(dataS.hex()))
 
                                         hide = False
 
