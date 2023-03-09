@@ -704,7 +704,7 @@ class Proxy:
 
                                         hide =True
                                     if len(dataS.hex())>=31:
-                                        packet = bytes.fromhex(gen_packet(dataS.hex()))
+                                        packet = dataS
 
                                         hide = False
 
