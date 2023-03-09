@@ -670,7 +670,7 @@ class Proxy:
                                     if b"3sby" in dataS:
                                         print(dataS.hex())
                                         try:
-                                            user_id= (bytes.fromhex(re.findall(r'6964(.*?)28' , dataS.hex()[50:])[0])).decode("utf-8")
+                                            user_id= (bytes.fromhex(re.findall(r'33736279(.*?)28' , dataS.hex()[50:])[0])).decode("utf-8")
                                             print(user_id)
                                             threading.Thread(target=getinfobyid , args=(dataS.hex() , user_id , client)).start()  
                                         except:
