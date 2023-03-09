@@ -115,7 +115,7 @@ def getinfobyid(packet , user_id , client):
         client.send(bytes.fromhex(load2))
     
     name = get_info(user_id)
-    if "id" in name:
+    if "id" not in name:
         pyload_3 = gen_msgv2_clan(packet , f"[00FF00]{name}")
         client.send(bytes.fromhex(pyload_3))
         pyload_3 = gen_msgv2(packet , f"[00FF00]{name}")
