@@ -437,13 +437,7 @@ class Proxy:
 
     #
     def botdev(self, client, remote, port):
-        try:
-
-
-
-
-
-
+        
             while True:
                 r, w, e = select.select([client, remote], [], [])
 
@@ -696,9 +690,7 @@ class Proxy:
 
                                 if client.send(dataS) <= 0:
                                     break
-        except Exception as e:
-            restart()
-            seaes=2
+        
     def spam( self , data_join):
         global des
         print(data_join)
