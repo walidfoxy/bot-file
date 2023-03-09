@@ -553,7 +553,7 @@ class Proxy:
                         
                         print("respons ---->[{}]".format(dataS.hex()[26:30]))
                         if '1809' in dataS.hex()[26:30] or "1802" in dataS.hex()[26:30] or "1808" in dataS.hex()[26:30]:
-                            des=False
+                            #des=False
                             print(dataC.hex()[0:4])
                             print('  the team ')
                             #hackg.send(hackw
