@@ -129,7 +129,7 @@ def getinfobyid(packet , user_id , client):
     
     load = gen_msgv2(packet , "[00FF00]Wait . . .")
     load2 =gen_msgv2_clan(packet , "[00FF00]Wait . . .") 
-    for i in range(4):
+    for i in range(1):
         time.sleep(1.5)
         client.send(bytes.fromhex(load))
         client.send(bytes.fromhex(load2))
@@ -213,7 +213,7 @@ def spam(server,packet):
 
 
         server.send(packet)
-        if  statues == False:
+        if   recordmode ==False:
 
             break
 
@@ -503,7 +503,7 @@ class Proxy:
                             global spampacket
                             spampacket =dataC
 
-                            recordmode=False
+                            #recordmode=False
                             global statues
                             statues= True
                             time.sleep(5)
@@ -675,6 +675,7 @@ class Proxy:
                                     recordmode = True
 
                                 if '1200' in dataS.hex()[0:4] and '2f2d7370616d' in dataS.hex()[0:900]:
+                                    recordmode=False
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[E0FF00]Spam Chat : [00FF00]Stopped")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]Spam Chat : [00FF00]Stopped"))))
                                 if '1200' in dataS.hex()[0:4]:
