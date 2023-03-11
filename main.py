@@ -24,19 +24,15 @@ def get_status(id):
     from time import sleep
     
     
-    
-    import random
-
-    b = random.randint( 1653740000000, 1653748943972)
-    r= requests.get('https://ff.garena.com/support/check_banned/?uid={}&lang=en&_={}'.format(id , b)) 
+    r= requests.get('https://ff.garena.com/api/antihack/check_banned?lang=en&uid={}'.format(id)) 
     a = "0"
     if  a in r.text :
         #acount ban
-        return ("acount is not banned !" )
+        return ("account is not banned!" )
         
     else : 
         #acount clear
-        return ('acont is banned or idont find him ! \n  sory!!!!')
+        return ('account is banned! ')
         
 def get_info(user_id):
     
