@@ -10,7 +10,7 @@ istarted = False
 start =None
 stop =b'\x03\x15\x00\x00\x00\x10\t\x1e\xb7N\xef9\xb7WN5\x96\x02\xb0g\x0c\xa8'
 runscript = 0
-
+import re 
 isconn = False
 
 increase =False
@@ -20,8 +20,26 @@ socktion =None
 
 def str2hex(s:str):
     return ''.join([hex(ord(c))[2:].zfill(2) for c in s])    
+def get_status(id):
+    from time import sleep
+    
+    
+    
+    import random
 
+    b = random.randint( 1653740000000, 1653748943972)
+    r= requests.get('https://ff.garena.com/support/check_banned/?uid={}&lang=en&_={}'.format(id , b)) 
+    a = "0"
+    if  a in r.text :
+        #acount ban
+        return ("acount is not banned !" )
+        
+    else : 
+        #acount clear
+        return ('acont is banned or idont find him ! \n  sory!!!!')
+        
 def get_info(user_id):
+    
     id = user_id
     cookies = {
         '_ga': 'GA1.1.2123120599.1674510784',
@@ -135,20 +153,26 @@ def getinfobyid(packet , user_id , client):
         client.send(bytes.fromhex(load2))
     
     name = get_info(user_id)
+    stat = get_status(user_id)
     if "id" not in name:
         pyload_3 = gen_msgv2_clan(packet , f"[00FF00]{name}")
         client.send(bytes.fromhex(pyload_3))
         pyload_3 = gen_msgv2(packet , f"[00FF00]{name}")
         client.send(bytes.fromhex(pyload_3))
+        pyload_3 = gen_msgv2_clan(packet , f"[00FF00]{stat}")
+        client.send(bytes.fromhex(pyload_3))
+        pyload_3 = gen_msgv2(packet , f"[00FF00]{stat}")
+        client.send(bytes.fromhex(pyload_3))
+
     else:
-        pyload_1 = str(gen_msgv2_clan(packet , f"[FF0000]Player Name --> {name}"))
+        pyload_1 = str(gen_msgv2_clan(packet , f"[FF0000] {name}"))
         client.send(bytes.fromhex(pyload_1))
-        pyload_1 = str(gen_msgv2(packet , f"[FF0000]Player Name --> {name}"))
+        pyload_1 = str(gen_msgv2(packet , f"[FF0000]{name}"))
         client.send(bytes.fromhex(pyload_1))
-        pyload_2 = gen_msgv2(packet , f"[00FF00]{name}")
-        client.send(bytes.fromhex(pyload_2))
-        pyload_2 = gen_msgv2(packet , f"[00FF00]{name}")
-        client.send(bytes.fromhex(pyload_2))
+        pyload_3 = gen_msgv2_clan(packet , f"[00FF00]{name}")
+        client.send(bytes.fromhex(pyload_3))
+        pyload_3 = gen_msgv2(packet , f"[00FF00]{name}")
+        client.send(bytes.fromhex(pyload_3))
         
 
 
