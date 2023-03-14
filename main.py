@@ -141,8 +141,8 @@ def gen_msgv2(packet  , replay):
 
 def getinfobyid(packet , user_id , client):
     
-    load = gen_msgv2(packet , "[FF00FF]إنتضر . . .")
-    load2 =gen_msgv2_clan(packet , "[FF00FF]إنتضر . . .") 
+    load = gen_msgv2(packet , "[FF00FF]Wait . . .")
+    load2 =gen_msgv2_clan(packet , "[FF00FF]Wait  . . .") 
     for i in range(1):
         time.sleep(1.5)
         client.send(bytes.fromhex(load))
