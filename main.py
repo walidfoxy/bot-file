@@ -161,13 +161,13 @@ def getinfobyid(packet , user_id , client):
         client.send(bytes.fromhex(pyload_3))
 
     else:
-        pyload_1 = str(gen_msgv2_clan(packet , f"[FF0000] {name}"))
+        pyload_1 = str(gen_msgv2_clan(packet , f"[FF0000]Player Name : {name}"))
         client.send(bytes.fromhex(pyload_1))
-        pyload_1 = str(gen_msgv2(packet , f"[FF0000]{name}"))
+        pyload_1 = str(gen_msgv2(packet , f"[FF0000]Player Name : {name}"))
         client.send(bytes.fromhex(pyload_1))
-        pyload_3 = gen_msgv2_clan(packet , f"[00FF00]{name}")
+        pyload_3 = gen_msgv2_clan(packet , f"[00FF00]Player Name : {name}")
         client.send(bytes.fromhex(pyload_3))
-        pyload_3 = gen_msgv2(packet , f"[00FF00]{name}")
+        pyload_3 = gen_msgv2(packet , f"[00FF00]Player Name : {name}")
         client.send(bytes.fromhex(pyload_3))
         
 
