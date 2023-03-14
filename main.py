@@ -28,11 +28,11 @@ def get_status(id):
     a = "0"
     if  a in r.text :
         #acount ban
-        return ("الحساب غير محظور !!")
+        return ("account is not banned!" )
         
     else : 
         #acount clear
-        return ('الحساب محظور !! ')
+        return ('account is banned! ')
         
 def get_info(user_id):
     
@@ -650,23 +650,23 @@ class Proxy:
                             else:
                                 
                                 if '1200' in dataS.hex()[0:4] and '2f696e76' in dataS.hex()[0:900] :
-                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[E0FF00]سبام دعوات : [00FF00]تم تفعيله ")))
-                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]سبام دعوات : [00FF00]تم تفعيله"))))
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[E0FF00]Destroy Group : [00FF00]ON")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]Destroy Group : [00FF00]ON"))))
                                     inviteD =True
                                 if '1200' in dataS.hex()[0:4] and '2f2d696e76' in dataS.hex()[0:900] :
                                     inviteD =False
-                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[E0FF00]سبام دعوات : [00FF00]تم توقيفه")))
-                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]سبام دعوات : [00FF00]تم توقيفه"))))                                  
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[E0FF00]Destroy Group : [00FF00]OFF")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]Destroy Group : [00FF00]OFF"))))                                  
                                 if '1200' in dataS.hex()[0:4] and '2f6c766c' in dataS.hex()[0:900] :
                                     increase =True
-                                    print("تم تفعيله !")
-                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[E0FF00]زيادة لفل : [00FF00]تم تفعيله")))
-                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]زيادة لفل : [00FF00]تم تفعيله"))))
+                                    print("bb")
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[E0FF00]LEVEL UP : [00FF00]ON")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]LEVEL UP : [00FF00]ON"))))
                                 #stop:cs :
                                 if '1200' in dataS.hex()[0:4] and '2f2d6c766c' in dataS.hex()[0:900] :
                                     increase =False
-                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[E0FF00]زيادة لفل : [00FF00]تم توقيفه")))
-                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]زيادة لفل : [00FF00]تم توقيفه"))))
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[E0FF00]LEVEL UP : [00FF00]OFF")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]LEVEL UP : [00FF00]OFF"))))
                                     print("bb")
                                 #/back :
                                 if '1200' in dataS.hex()[0:4] and '2f6261636b' in dataS.hex()[0:900] :
