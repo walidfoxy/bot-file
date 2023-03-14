@@ -155,10 +155,13 @@ def getinfobyid(packet , user_id , client):
         client.send(bytes.fromhex(pyload_3))
         pyload_3 = gen_msgv2(packet , f"[000fff]Player Name : {name}")
         client.send(bytes.fromhex(pyload_3))
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[E0FF00]Destroy Group : [00FF00]ON")))
         pyload_3 = gen_msgv2_clan(packet , f"[00FF00]{stat}")
         client.send(bytes.fromhex(pyload_3))
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[E0FF00]Destroy Group : [00FF00]ON")))
         pyload_3 = gen_msgv2(packet , f"[00FF00]{stat}")
         client.send(bytes.fromhex(pyload_3))
+        
 
     else:
         pyload_1 = str(gen_msgv2_clan(packet , f"[FF0000]Player Name : {name}"))
