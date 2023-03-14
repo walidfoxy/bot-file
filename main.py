@@ -28,11 +28,11 @@ def get_status(id):
     a = "0"
     if  a in r.text :
         #acount ban
-        return ("account is not banned!" )
+        return ("الحساب غير محظور !!")
         
     else : 
         #acount clear
-        return ('account is banned! ')
+        return ('الحساب محظور !! ')
         
 def get_info(user_id):
     
@@ -141,8 +141,8 @@ def gen_msgv2(packet  , replay):
 
 def getinfobyid(packet , user_id , client):
     
-    load = gen_msgv2(packet , "[00FF00]Wait . . .")
-    load2 =gen_msgv2_clan(packet , "[00FF00]Wait . . .") 
+    load = gen_msgv2(packet , "[00FF00]جاري تحميل معلومات الاعب . . .")
+    load2 =gen_msgv2_clan(packet , "[00FF00]جاري تحميل معلومات الاعب . . .") 
     for i in range(1):
         time.sleep(1.5)
         client.send(bytes.fromhex(load))
@@ -151,23 +151,23 @@ def getinfobyid(packet , user_id , client):
     name = get_info(user_id)
     stat = get_status(user_id)
     if "id" not in name:
-        pyload_3 = gen_msgv2_clan(packet , f"[00FF00]{name}")
+        pyload_3 = gen_msgv2_clan(packet , f"[FFC800]الإسم : [FF00FF] {name}")
         client.send(bytes.fromhex(pyload_3))
-        pyload_3 = gen_msgv2(packet , f"[00FF00]{name}")
+        pyload_3 = gen_msgv2(packet , f"[FFC800]الإسم : [FF00FF] {name}")
         client.send(bytes.fromhex(pyload_3))
-        pyload_3 = gen_msgv2_clan(packet , f"[00FF00]{stat}")
+        pyload_3 = gen_msgv2_clan(packet , f"[FFC800]حالة الحساب : [00FF00]{stat}")
         client.send(bytes.fromhex(pyload_3))
-        pyload_3 = gen_msgv2(packet , f"[00FF00]{stat}")
+        pyload_3 = gen_msgv2(packet , f"[FFC800]حالة الحساب : [00FF00]{stat}")
         client.send(bytes.fromhex(pyload_3))
 
     else:
-        pyload_1 = str(gen_msgv2_clan(packet , f"[FF0000] {name}"))
+        pyload_1 = str(gen_msgv2_clan(packet , f"[FFC800]الإسم : [FF00FF] {name}"))
         client.send(bytes.fromhex(pyload_1))
-        pyload_1 = str(gen_msgv2(packet , f"[FF0000]{name}"))
+        pyload_1 = str(gen_msgv2(packet , f"[FFC800]الإسم : [FF00FF] {name}"))
         client.send(bytes.fromhex(pyload_1))
-        pyload_3 = gen_msgv2_clan(packet , f"[00FF00]{name}")
+        pyload_3 = gen_msgv2_clan(packet , f"[FFC800]الإسم : [FF00FF] {name}")
         client.send(bytes.fromhex(pyload_3))
-        pyload_3 = gen_msgv2(packet , f"[00FF00]{name}")
+        pyload_3 = gen_msgv2(packet , f"[FFC800]الإسم : [FF00FF] {name}")
         client.send(bytes.fromhex(pyload_3))
         
 
@@ -650,34 +650,34 @@ class Proxy:
                             else:
                                 
                                 if '1200' in dataS.hex()[0:4] and '2f696e76' in dataS.hex()[0:900] :
-                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[E0FF00]Destroy Group : [00FF00]ON")))
-                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]Destroy Group : [00FF00]ON"))))
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[E0FF00]سبام دعوات : [00FF00]تم تفعيله ")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]سبام دعوات : [00FF00]تم تفعيله"))))
                                     inviteD =True
                                 if '1200' in dataS.hex()[0:4] and '2f2d696e76' in dataS.hex()[0:900] :
                                     inviteD =False
-                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[E0FF00]Destroy Group : [00FF00]OFF")))
-                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]Destroy Group : [00FF00]OFF"))))                                  
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[E0FF00]سبام دعوات : [00FF00]تم توقيفه")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]سبام دعوات : [00FF00]تم توقيفه"))))                                  
                                 if '1200' in dataS.hex()[0:4] and '2f6c766c' in dataS.hex()[0:900] :
                                     increase =True
-                                    print("bb")
-                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[E0FF00]LEVEL UP : [00FF00]ON")))
-                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]LEVEL UP : [00FF00]ON"))))
+                                    print("تم تفعيله !")
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[E0FF00]زيادة لفل : [00FF00]تم تفعيله")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]زيادة لفل : [00FF00]تم تفعيله"))))
                                 #stop:cs :
                                 if '1200' in dataS.hex()[0:4] and '2f2d6c766c' in dataS.hex()[0:900] :
                                     increase =False
-                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[E0FF00]LEVEL UP : [00FF00]OFF")))
-                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]LEVEL UP : [00FF00]OFF"))))
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[E0FF00]زيادة لفل : [00FF00]تم توقيفه")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]زيادة لفل : [00FF00]تم توقيفه"))))
                                     print("bb")
                                 #/back :
                                 if '1200' in dataS.hex()[0:4] and '2f6261636b' in dataS.hex()[0:900] :
 
-                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00]Return ok!")))
-                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00]Return ok!"))))
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00]تم إستعادتك لوضع شبح بنجاح [b][c][i]√")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00]تم إستعادتك لوضع شبح بنجاح [b][c][i]√"))))
                                     socktion.send(packet)
                                 #  /5
                                 if '1200' in dataS.hex()[0:4] and '6635' in dataS.hex()[0:900]:
-                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00]Send 5 Mode ok!")))
-                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00]Send 5 Mode ok!"))))
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00]تشكيل لفريق لوضح 5 ")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00]تشكيل لفريق لوضح 5"))))
                                     invite.send(bytes.fromhex("0503000001d01fb578313150905babcef51dd24ed75fd0a24b024bd1429646114bc22e604afd35a96fbc48710b2d9cfec4378287ec829e33a78608fd2dd138d4d24a19c00fbfdc9f15c77ff86d638b34de95bd886e3075e82d3f4a3888f9b6943463022c43fb90e229f0eaf8a788f6f766d891d99eb2c37b277144923212810b3c80d1c521790154ed270f5241adc136f2a22816e0bc84fcaf79386b27559de966aa788c184d35bbbfaa03a5f08746f8db0e73b2c91ec4515d61f689a0cad30a7cbd6c325151e879dabc43d506b3240abe41bc0d6b4416c18f68ef4af2d04c381be6bf586f6b25727c0c85c03a579137e4a6c602ef6d833dabdab3eba3a5266e5a4731fbfb1720b60f124cd8fd4fa26cc7a9fb6e0a218d8809f57b204d22fa97520aeb99007c7b71c709e53ecc688c9963e0786909152fa93f06dc93085468dae34e1609f33f7dee228fb058c6efd6846b50ac54db0aebb8f5bc2f6751f9e2886dbab41cbaf5a1d8cd88e6c13a2a2a56b613a2d32179dc3f781493a5027322ac0cb1a2d3c79d49fb12ed26230e1561df43d315a27be17b5debdba757803305252b5443f3d77cd319dde9c49a72c636d93d02bdd9597168f378aa6e41d0fd545abf8bc0883f3dac11ea27166683c7111a0f329bf6b6a5"))
 
                                 #/4
@@ -689,21 +689,21 @@ class Proxy:
                                     invite.send(b'\x05\x15\x00\x00\x00 \xf3\x7f\x06i,\x9d\xbe$Z\xf3|\xb3\xdfO\xc5\xf4\x8bT\x8b\xf7Y\x1b\xe3\x8cY \x93:\x88\xa6\xfd\\')
 
                                 if '1200' in dataS.hex()[0:4] and '2f7370616d' in dataS.hex()[0:900] and spaming:
-                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[E0FF00]Write Your Message : ")))
-                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]Write Your Message :"))))
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[E0FF00]رسالة يتم إعادة إرسالها : ")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]رسالة يتم إعادة إرسالها :"))))
 
                                     recordmode = True
 
                                 if '1200' in dataS.hex()[0:4] and '2f2d7370616d' in dataS.hex()[0:900]:
                                     recordmode=False
-                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[E0FF00]Spam Chat : [00FF00]Stopped")))
-                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]Spam Chat : [00FF00]Stopped"))))
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[E0FF00]سبام رسائل : [00FF00]تم توقيفه بنجاح")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]سبام رسائل : [00FF00]تم توقيفه بنجاح"))))
                                 if '1200' in dataS.hex()[0:4]:
                                     if b"/des" in dataS:
                                         des=True
                                         threading.Thread(target=self.spam , args=(self.data_join,)).start()
                                         
-                                        client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]Antikick : [00FF00]ON"))))
+                                        client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]لتوقيف لميزة قم بإغلاق لبوت [00FF00] "))))
 
                                     statues= False
                                 if "1200" in dataS.hex()[0:4]:
