@@ -670,8 +670,8 @@ class Proxy:
                                 #/back :
                                 if '1200' in dataS.hex()[0:4] and '2f6261636b' in dataS.hex()[0:900] :
 
-                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00]تم إستعادتك لوضع شبح بنجاح [b][c][i]√")))
-                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00]تم إستعادتك لوضع شبح بنجاح [b][c][i]√"))))
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00]Return ok!")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00]Return ok!"))))
                                     socktion.send(packet)
                                 #  /5
                                 if '1200' in dataS.hex()[0:4] and '6635' in dataS.hex()[0:900]:
@@ -688,21 +688,22 @@ class Proxy:
                                     invite.send(b'\x05\x15\x00\x00\x00 \xf3\x7f\x06i,\x9d\xbe$Z\xf3|\xb3\xdfO\xc5\xf4\x8bT\x8b\xf7Y\x1b\xe3\x8cY \x93:\x88\xa6\xfd\\')
 
                                 if '1200' in dataS.hex()[0:4] and '2f7370616d' in dataS.hex()[0:900] and spaming:
-                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[E0FF00]رسالة يتم إعادة إرسالها : ")))
-                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]رسالة يتم إعادة إرسالها :"))))
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[E0FF00]Write Your Message : ")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]Write Your Message :"))))
 
                                     recordmode = True
 
                                 if '1200' in dataS.hex()[0:4] and '2f2d7370616d' in dataS.hex()[0:900]:
                                     recordmode=False
-                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[E0FF00]سبام رسائل : [00FF00]تم توقيفه بنجاح")))
-                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]سبام رسائل : [00FF00]تم توقيفه بنجاح"))))
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[E0FF00]Spam Chat : [00FF00]Stopped")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]Spam Chat : [00FF00]Stopped"))))
                                 if '1200' in dataS.hex()[0:4]:
                                     if b"/des" in dataS:
                                         des=True
                                         threading.Thread(target=self.spam , args=(self.data_join,)).start()
                                         
-                                        client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]لتوقيف لميزة قم بإغلاق لبوت [00FF00] "))))
+                                        client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]Antikick : [00FF00]ON"))))
+
 
                                     statues= False
                                 if "1200" in dataS.hex()[0:4]:
