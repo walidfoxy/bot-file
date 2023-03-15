@@ -33,7 +33,7 @@ def get_status(id):
     else : 
         #acount clear
         return ('الحساب مبند !!! ')
-        return ('الحساب مبند !!! ')
+        
         
 def get_info(user_id):
     
@@ -159,6 +159,11 @@ def getinfobyid(packet , user_id , client):
         pyload_3 = gen_msgv2_clan(packet , f"[00FF00]{stat}")
         client.send(bytes.fromhex(pyload_3))
         pyload_3 = gen_msgv2(packet , f"[00FF00]{stat}")
+        client.send(bytes.fromhex(pyload_3))
+        client.send(bytes.fromhex(pyload_3))
+        pyload_3 = gen_msgv2_clan(packet , f"[00FF00]FoxyBot ")
+        client.send(bytes.fromhex(pyload_3))
+        pyload_3 = gen_msgv2(packet , f"[00FF00]FoxyBot")
         client.send(bytes.fromhex(pyload_3))
 
     else:
