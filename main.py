@@ -33,6 +33,7 @@ def get_status(id):
     else : 
         #acount clear
         return ('الحساب مبند !!! ')
+        return ('الحساب مبند !!! ')
         
 def get_info(user_id):
     
