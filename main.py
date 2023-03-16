@@ -256,7 +256,7 @@ def destroy(remote,dataC):
 
 
 def timesleep():
-    time.sleep(10)
+    time.sleep(30)
     #print(istarted)
     if istarted == True:
         serversocket.send(start)
