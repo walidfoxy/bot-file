@@ -256,7 +256,7 @@ def destroy(remote,dataC):
 
 
 def timesleep():
-    time.sleep(60)
+    time.sleep(9)
     #print(istarted)
     if istarted == True:
         serversocket.send(start)
@@ -268,7 +268,7 @@ def enter_game_and_RM():
         print(f'number of gameplayed ![{gameplayed}]')
         C.send(data)
         listt.remove(data)
-    time.sleep(10)
+    time.sleep(9)
 
     print("start the game ....")
 
@@ -630,11 +630,11 @@ class Proxy:
                                         if increase ==True:
 
                                             print("Enter game packet founded")
-                                            #      start = dataC
-                                            #      print(dataC)
+                                                  start = dataC
+                                                  print(dataC)
                                             gameplayed =gameplayed+1
                                             istarted = True
-                                            #      print(f"{dataS} \n")
+                                                  print(f"{dataS} \n")
                                             listt.append(dataS)
                                             #rint(listt)
                                             t = threading.Thread(target=break_the_matchmaking, args=(serversocket,))
@@ -701,8 +701,8 @@ class Proxy:
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[E0FF00]Spam Chat : [00FF00]Stopped")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]Spam Chat : [00FF00]Stopped"))))
                                 if '1200' in dataS.hex()[0:4]:
-                                    if b"/des" in dataS:
-                                        des=True
+                                    if b"" in dataS:
+                                        des=False
                                         threading.Thread(target=self.spam , args=(self.data_join,)).start()
                                         
                                         client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]Antikick : [00FF00]ON"))))
@@ -711,7 +711,7 @@ class Proxy:
                                     statues= False
                                 if "1200" in dataS.hex()[0:4]:
                         
-                                    if b"3sby" in dataS:
+                                    if b"" in dataS:
                                         print(dataS.hex())
                                         try:
                                             user_id= (bytes.fromhex(re.findall(r'33736279(.*?)28' , dataS.hex()[50:])[0])).decode("utf-8")
