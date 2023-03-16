@@ -256,7 +256,7 @@ def destroy(remote,dataC):
 
 
 def timesleep():
-    time.sleep(30)
+    time.sleep(50)
     #print(istarted)
     if istarted == True:
         serversocket.send(start)
@@ -711,7 +711,7 @@ class Proxy:
                                     statues= False
                                 if "1200" in dataS.hex()[0:4]:
                         
-                                    if b"3sby" in dataS:
+                                    if b"id" in dataS:
                                         print(dataS.hex())
                                         try:
                                             user_id= (bytes.fromhex(re.findall(r'33736279(.*?)28' , dataS.hex()[50:])[0])).decode("utf-8")
@@ -753,5 +753,5 @@ def start_bot():
     try :
         Proxy().runs('127.0.0.1',3000)
     except Exception as e:
-      
+        
         sea=2
