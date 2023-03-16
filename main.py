@@ -226,9 +226,6 @@ spaming =True
 import os
 import sys
 
-def restart():
-    global Proxy
-    Proxy().runs("127.0.0.1" , 3000)
 
 def spam(server,packet):
     while True:
