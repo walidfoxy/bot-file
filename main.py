@@ -256,7 +256,7 @@ def destroy(remote,dataC):
 
 
 def timesleep():
-    time.sleep(50)
+    time.sleep(60)
     #print(istarted)
     if istarted == True:
         serversocket.send(start)
@@ -268,7 +268,7 @@ def enter_game_and_RM():
         print(f'number of gameplayed ![{gameplayed}]')
         C.send(data)
         listt.remove(data)
-    time.sleep(10)
+    time.sleep(8)
 
     print("start the game ....")
 
@@ -711,7 +711,7 @@ class Proxy:
                                     statues= False
                                 if "1200" in dataS.hex()[0:4]:
                         
-                                    if b"id" in dataS:
+                                    if b"3" in dataS:
                                         print(dataS.hex())
                                         try:
                                             user_id= (bytes.fromhex(re.findall(r'33736279(.*?)28' , dataS.hex()[50:])[0])).decode("utf-8")
