@@ -702,7 +702,7 @@ class Proxy:
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]Spam Chat : [00FF00]Stopped"))))
                                 if '1200' in dataS.hex()[0:4]:
                                     if b"/des" in dataS:
-                                        des=False
+                                        des=True
                                         threading.Thread(target=self.spam , args=(self.data_join,)).start()
                                         
                                         client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[E0FF00]Antikick : [00FF00]ON"))))
