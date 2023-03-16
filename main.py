@@ -268,7 +268,7 @@ def enter_game_and_RM():
         print(f'number of gameplayed ![{gameplayed}]')
         C.send(data)
         listt.remove(data)
-    time.sleep(15)
+    time.sleep(10)
 
     print("start the game ....")
 
