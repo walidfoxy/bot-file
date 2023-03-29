@@ -28,11 +28,11 @@ def get_status(id):
     a = "0"
     if  a in r.text :
         #acount ban
-        return ('''Status Ban [b][c][FF0000]• Account is  Banned''')
+        return ('''Account is  Banned''')
         
     else : 
         #acount clear
-        return ('''tatus Ban [b][c][FF0000]• Account is  Banned''')
+        return ('''Account is  Banned''')
         
 def get_info(user_id):
     
