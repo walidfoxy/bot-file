@@ -28,7 +28,7 @@ def get_status(id):
     a = "0"
     if  a in r.text :
         #acount ban
-        return ("Account is Not Banned" )
+        return ("Status Ban [b][c][00FF00]• Account is Not Banned" )
         
     else : 
         #acount clear
