@@ -28,11 +28,11 @@ def get_status(id):
     a = "0"
     if  a in r.text :
         #acount ban
-        return ("الحساب غير مبند !!" )
+        return ("Status Ban [b][c][00FF00]• Account is Not Banned" )
         
     else : 
         #acount clear
-        return ('الحساب مبند !!! ')
+        return ('Status Ban [b][c][FF0000]• Account is  Banned')
         
         
 def get_info(user_id):
@@ -148,7 +148,7 @@ def getinfobyid(packet , user_id , client):
         time.sleep(1.5)
         client.send(bytes.fromhex(load))
         client.send(bytes.fromhex(load2))
-    
+    final_info_region = received_data[0]
     name = get_info(user_id)
     stat = get_status(user_id)
     if "id" not in name:
@@ -156,16 +156,14 @@ def getinfobyid(packet , user_id , client):
         client.send(bytes.fromhex(pyload_3))
         pyload_3 = gen_msgv2(packet , f"[00FF00]{name}")
         client.send(bytes.fromhex(pyload_3))
+        payload_4 = gen_msgv2_clan(packet,f"[00FFFF]Player Server-->> [FFA500]{final_info_region}")
+    client.send(bytes.fromhex(payload_4))
         pyload_3 = gen_msgv2_clan(packet , f"[00FF00]{stat}")
         client.send(bytes.fromhex(pyload_3))
         pyload_3 = gen_msgv2(packet , f"[00FF00]{stat}")
         client.send(bytes.fromhex(pyload_3))
         client.send(bytes.fromhex(pyload_3))
-        pyload_3 = gen_msgv2_clan(packet , f"[00FF00]السبب : زيت زيتون ")
-        client.send(bytes.fromhex(pyload_3))
-        pyload_3 = gen_msgv2(packet , f"[00FF00]السبب : زيت زيتون")
-        client.send(bytes.fromhex(pyload_3))
-
+        
     else:
         pyload_1 = str(gen_msgv2_clan(packet , f"[FF0000] {name}"))
         client.send(bytes.fromhex(pyload_1))
@@ -175,7 +173,8 @@ def getinfobyid(packet , user_id , client):
         client.send(bytes.fromhex(pyload_3))
         pyload_3 = gen_msgv2(packet , f"[00FF00]{name}")
         client.send(bytes.fromhex(pyload_3))
-        
+        payload_5 = gen_msgv2(packet,f"[00FFFF]Player Server-->> [FFA500]{final_info_region}")
+    client.send(bytes.fromhex(payload_5))
 
 
 def gen_msgv2_clan(packet  , replay):
