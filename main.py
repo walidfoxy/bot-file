@@ -672,14 +672,26 @@ class Proxy:
                                     
                                     
                                     
-                                    
+                                    #followus
                                 if '1200' in dataS.hex()[0:4] and '666f7879' in dataS.hex()[0:900] :
-                                    
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FFFF][b][c]wait...)))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FFFF][b][c]wait..."))))
+                                    time.sleep(3.5)
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Instagram : [FFC800][b][c]@the_foxy999"))))
                                     #youtoube
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Youtoube : [FFC800][b][c] The Foxy Ⓥ")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Youtoube : [FFC800][b][c]The Foxy Ⓥ"))))
                                     
+                                    
+                                    
+                                if '1200' in dataS.hex()[0:4] and '466f7879' in dataS.hex()[0:900] :
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FFFF][b][c]wait...)))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FFFF][b][c]wait..."))))
+                                    time.sleep(3.5)
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Instagram : [FFC800][b][c]@the_foxy999"))))
+                                    #youtoube
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Youtoube : [FFC800][b][c] The Foxy Ⓥ")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Youtoube : [FFC800][b][c]The Foxy Ⓥ"))))
                                     
                                     
                                     
