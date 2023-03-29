@@ -662,14 +662,9 @@ class Proxy:
                                     #admin
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]The Foxy Official [FFC800][b][c]Ⓥ")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]The Foxy Official [FFC800][b][c]Ⓥ"))))
-                                    
-                                    #insta
+                                    time.sleep(3.5)
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c][i]Instagram : [FFC800][b][c] @the_foxy999")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c][i]Instagram : [FFC800][b][c] @the_foxy999"))))
-                                    
-                                                                        #Youtoube
-                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c][i]Youtoube : [FFC800][b][c]The Foxy Ⓥ")))
-                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c][i]Youtoube : [FFC800][b][c]The Foxy Ⓥ"))))
                                     
                                     
                                 if '1200' in dataS.hex()[0:4] and '2f2d696e76' in dataS.hex()[0:900] :
