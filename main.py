@@ -652,9 +652,14 @@ class Proxy:
                             else:
                                 
                                 if '1200' in dataS.hex()[0:4] and '2f696e76' in dataS.hex()[0:900] : 
-                                    time.sleep(1.5)
+                                    
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FFFF][b][c]Destroy Sqoud -->> [00ff00][b][c] ON")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FFFF][b][c]Destroy Sqoud -->> [00ff00][b][c] ON"))))
+                                    
+                                    time.sleep(1.5)
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]The Foxy Official [FFC800][b][c]Ⓥ")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]The Foxy Official [FFC800][b][c]Ⓥ"))))
+                                    
                                     inviteD =True
                                 if '1200' in dataS.hex()[0:4] and '2f2d696e76' in dataS.hex()[0:900] :
                                     inviteD =False
