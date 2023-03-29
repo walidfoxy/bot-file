@@ -28,11 +28,12 @@ def get_status(id):
     a = "0"
     if  a in r.text :
         #acount ban
-        return ('''Account is  Banned''')
+        return ("الحساب غير مبند !!" )
         
     else : 
         #acount clear
-        return ('''Account is  Banned''')
+        return ('الحساب مبند !!! ')
+        
         
 def get_info(user_id):
     
@@ -155,13 +156,16 @@ def getinfobyid(packet , user_id , client):
         client.send(bytes.fromhex(pyload_3))
         pyload_3 = gen_msgv2(packet , f"[00FF00]{name}")
         client.send(bytes.fromhex(pyload_3))
-        
         pyload_3 = gen_msgv2_clan(packet , f"[00FF00]{stat}")
         client.send(bytes.fromhex(pyload_3))
         pyload_3 = gen_msgv2(packet , f"[00FF00]{stat}")
         client.send(bytes.fromhex(pyload_3))
         client.send(bytes.fromhex(pyload_3))
-        
+        pyload_3 = gen_msgv2_clan(packet , f"[00FF00]السبب : زيت زيتون ")
+        client.send(bytes.fromhex(pyload_3))
+        pyload_3 = gen_msgv2(packet , f"[00FF00]السبب : زيت زيتون")
+        client.send(bytes.fromhex(pyload_3))
+
     else:
         pyload_1 = str(gen_msgv2_clan(packet , f"[FF0000] {name}"))
         client.send(bytes.fromhex(pyload_1))
