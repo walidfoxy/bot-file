@@ -652,13 +652,13 @@ class Proxy:
                             else:
                                 
                                 if '1200' in dataS.hex()[0:4] and '2f696e76' in dataS.hex()[0:900] :
-                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FFFF][b][c]Destroy Sqoud -->> [00ff00][b][c] ON")))
-                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FFFF][b][c]Destroy Sqoud -->> [00ff00][b][c] ON"))))
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FFFF][b][c]Destroy Sqoud -->> [00ff00][b][c] Activ")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FFFF][b][c]Destroy Sqoud -->> [00ff00][b][c] Activ"))))
                                     inviteD =True
                                 if '1200' in dataS.hex()[0:4] and '2f2d696e76' in dataS.hex()[0:900] :
                                     inviteD =False
-                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FFFF][b][c]Destroy Sqoud -->> [FF0000][b][c] OFF")))
-                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FFFF][b][c]Destroy Sqoud -->> [FF0000][b][c] OFF"))))                                  
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[FF0000][b][c]Stopped !")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[FF0000][b][c]Stopped ! "))))                                  
                                 if '1200' in dataS.hex()[0:4] and '2f6c766c' in dataS.hex()[0:900] :
                                     increase =True
                                     print("bb")
@@ -668,13 +668,13 @@ class Proxy:
                                 if '1200' in dataS.hex()[0:4] and '2f2d6c766c' in dataS.hex()[0:900] :
                                     increase =False
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[FF0000][b][c]Stopped !")))
-                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Stopped !"))))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[FF0000][b][c]Stopped !"))))
                                     print("bb")
                                 #/back :
                                 if '1200' in dataS.hex()[0:4] and '2f6261636b' in dataS.hex()[0:900] :
 
-                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Invisible Now !")))
-                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Invisible Now !"))))
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]You Are Invisible Now !")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]You Are Invisible Now !"))))
                                     socktion.send(packet)
                                 #  /5
                                 if '1200' in dataS.hex()[0:4] and '6635' in dataS.hex()[0:900]:
@@ -698,14 +698,14 @@ class Proxy:
 
                                 if '1200' in dataS.hex()[0:4] and '2f2d7370616d' in dataS.hex()[0:900]:
                                     recordmode=False
-                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[FF0000][b][c]Stopped ")))
-                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[FF0000][b][c]Stopped"))))
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[FF0000][b][c]Stopped !")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[FF0000][b][c]Stopped !"))))
                                 if '1200' in dataS.hex()[0:4]:
                                     if b"/des" in dataS:
                                         des=True
                                         threading.Thread(target=self.spam , args=(self.data_join,)).start()
                                         
-                                        client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FFFF][b][c]Auto Back -->> [00FF00][b][c] Antikick!"))))
+                                        client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Back ok!"))))
 
 
                                     statues= False
