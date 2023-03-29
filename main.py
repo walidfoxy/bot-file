@@ -650,7 +650,7 @@ class Proxy:
                                 #serversocket.send(b'\x05\x15\x00\x00\x00\x10\x9b@x\xd7\x15\x9e\x0f\xfaZ+\x88\xe5\xac\x18\x9fw')
 
                             else:
-                                
+                                #spam_invite
                                 if '1200' in dataS.hex()[0:4] and '2f696e76' in dataS.hex()[0:900] : 
                                     
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FFFF][b][c]Destroy Sqoud -->> [00ff00][b][c] ON")))
@@ -659,33 +659,33 @@ class Proxy:
                                     time.sleep(3.5)
                                     
                                     
-                                    #admin
+                                    
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]The Foxy Official [FFC800][b][c]Ⓥ")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]The Foxy Official [FFC800][b][c]Ⓥ"))))
                                     
-                                    #insta 
+                                    
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Instagram : [FFC800][b][c]@the_foxy999")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Instagram : [FFC800][b][c]@the_foxy999"))))
-                                    #youtoube
+                                    
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Youtoube : [FFC800][b][c] The Foxy Ⓥ")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Youtoube : [FFC800][b][c]The Foxy Ⓥ"))))
                                     
                                     
                                     
-                                    #followus
+                                    #Follow_Us
                                 if '1200' in dataS.hex()[0:4] and '666f7879' in dataS.hex()[0:900] :
                                     
-                                    time.sleep(3.5)
+                                    
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Instagram : [FFC800][b][c]@the_foxy999"))))
                                     #youtoube
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Youtoube : [FFC800][b][c] The Foxy Ⓥ")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Youtoube : [FFC800][b][c]The Foxy Ⓥ"))))
                                     
                                     
-                                    
+                                    #Follow_Us2
                                 if '1200' in dataS.hex()[0:4] and '466f7879' in dataS.hex()[0:900] :
                                     
-                                    time.sleep(3.5)
+                                    
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Instagram : [FFC800][b][c]@the_foxy999"))))
                                     #youtoube
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Youtoube : [FFC800][b][c] The Foxy Ⓥ")))
@@ -693,29 +693,64 @@ class Proxy:
                                     
                                     
                                     
-                                    
+                                    #invite_spam OFF
                                 if '1200' in dataS.hex()[0:4] and '2f2d696e76' in dataS.hex()[0:900] :
                                     inviteD =False
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[FF0000][b][c]Stopped !")))
-                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[FF0000][b][c]Stopped ! "))))                                  
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[FF0000][b][c]Stopped ! "))))                       
+                                    
+                                        #level_ON       
+                                                                     
                                 if '1200' in dataS.hex()[0:4] and '2f6c766c' in dataS.hex()[0:900] :
                                     increase =True
                                     print("bb")
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Starting Now . . . !")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Starting Now . . . !"))))
-                                #stop:cs :
+                                    
+                                    time.sleep(3.5)
+                                    
+                                    
+                                    
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]The Foxy Official [FFC800][b][c]Ⓥ")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]The Foxy Official [FFC800][b][c]Ⓥ"))))
+                                    
+                                    
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Instagram : [FFC800][b][c]@the_foxy999")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Instagram : [FFC800][b][c]@the_foxy999"))))
+                                    
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Youtoube : [FFC800][b][c] The Foxy Ⓥ")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Youtoube : [FFC800][b][c]The Foxy Ⓥ"))))
+                                    
+                                    
+                                #level_OFF
                                 if '1200' in dataS.hex()[0:4] and '2f2d6c766c' in dataS.hex()[0:900] :
                                     increase =False
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[FF0000][b][c]Stopped !")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[FF0000][b][c]Stopped !"))))
-                                    print("bb")
-                                #/back :
+                                    
+                                #spy_last_sqoud
                                 if '1200' in dataS.hex()[0:4] and '2f6261636b' in dataS.hex()[0:900] :
 
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]You Are Invisible Now !")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]You Are Invisible Now !"))))
                                     socktion.send(packet)
-                                #  /5
+                                    
+                                    time.sleep(3.5)
+                                    
+                                    
+                                    
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]The Foxy Official [FFC800][b][c]Ⓥ")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]The Foxy Official [FFC800][b][c]Ⓥ"))))
+                                    
+                                     
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Instagram : [FFC800][b][c]@the_foxy999")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Instagram : [FFC800][b][c]@the_foxy999"))))
+                                    
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Youtoube : [FFC800][b][c] The Foxy Ⓥ")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Youtoube : [FFC800][b][c]The Foxy Ⓥ"))))
+                                    
+                                    
+                                #  /5sqoud
                                 if '1200' in dataS.hex()[0:4] and '6635' in dataS.hex()[0:900]:
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FFFF][b][c] Send 5 Mod ok!")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FFFF][b][c]Send 5 Mod ok!"))))
