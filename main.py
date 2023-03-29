@@ -173,8 +173,7 @@ def getinfobyid(packet , user_id , client):
         client.send(bytes.fromhex(pyload_3))
         pyload_3 = gen_msgv2(packet , f"[00FF00]{name}")
         client.send(bytes.fromhex(pyload_3))
-        payload_5 = gen_msgv2(packet,f"[00FFFF]Player Server-->> [FFA500]{final_info_region}")
-    client.send(bytes.fromhex(payload_5))
+        
 
 
 def gen_msgv2_clan(packet  , replay):
