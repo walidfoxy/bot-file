@@ -28,11 +28,11 @@ def get_status(id):
     a = "0"
     if  a in r.text :
         #acount ban
-        return ("Status Ban [b][c][00FF00]• Account is Not Banned" )
+        return ("Account is Not Banned" )
         
     else : 
         #acount clear
-        return ('Status Ban [b][c][FF0000]• Account is  Banned')
+        return ('Account is Banned')
         
         
 def get_info(user_id):
@@ -148,7 +148,7 @@ def getinfobyid(packet , user_id , client):
         time.sleep(1.5)
         client.send(bytes.fromhex(load))
         client.send(bytes.fromhex(load2))
-    
+    final_info_region = received_data[0]
     name = get_info(user_id)
     stat = get_status(user_id)
     if "id" not in name:
@@ -156,7 +156,8 @@ def getinfobyid(packet , user_id , client):
         client.send(bytes.fromhex(pyload_3))
         pyload_3 = gen_msgv2(packet , f"[00FF00]{name}")
         client.send(bytes.fromhex(pyload_3))
-        
+        payload_4 = gen_msgv2_clan(packet,f"[00FFFF]Player Server-->> [FFA500]{final_info_region}")
+    client.send(bytes.fromhex(payload_4))
         pyload_3 = gen_msgv2_clan(packet , f"[00FF00]{stat}")
         client.send(bytes.fromhex(pyload_3))
         pyload_3 = gen_msgv2(packet , f"[00FF00]{stat}")
