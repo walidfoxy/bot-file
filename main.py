@@ -152,9 +152,9 @@ def getinfobyid(packet , user_id , client):
     name = get_info(user_id)
     stat = get_status(user_id)
     if "id" not in name:
-        pyload_3 = gen_msgv2_clan(packet , f"""[00FFFF][b][c]Player Name -->> [FFA500]{name}""")
+        pyload_3 = gen_msgv2_clan(packet , f"""[00FFFF][b][c]Player Name -->> [FFA500]{user_id}""")
         client.send(bytes.fromhex(pyload_3))
-        pyload_3 = gen_msgv2(packet , f"""[00FFFF][b][c]Player Name -->> [FFA500]{name}""")
+        pyload_3 = gen_msgv2(packet , f"""[00FFFF][b][c]Player Name -->> [FFA500]{user_id}""")
         client.send(bytes.fromhex(pyload_3))
         
         pyload_3 = gen_msgv2_clan(packet , f"""[00FFFF][b][c]Status : [00ff00][b][c] {stat}""")
@@ -164,13 +164,13 @@ def getinfobyid(packet , user_id , client):
         client.send(bytes.fromhex(pyload_3))
 
     else:
-        pyload_1 = str(gen_msgv2_clan(packet , f"""[00FFFF][b][c]Player Name -->> [FFA500]{name}"""))
+        pyload_1 = str(gen_msgv2_clan(packet , f"""[00FFFF][b][c]Player Name -->> [FFA500]{user_id}"""))
         client.send(bytes.fromhex(pyload_1))
-        pyload_1 = str(gen_msgv2(packet , f"""[00FFFF][b][c]Player Name -->> [FFA500]{name}"""))
+        pyload_1 = str(gen_msgv2(packet , f"""[00FFFF][b][c]Player Name -->> [FFA500]{user_id}"""))
         client.send(bytes.fromhex(pyload_1))
-        pyload_3 = gen_msgv2_clan(packet , f"""[00FFFF][b][c]Player Name -->> [FFA500]{name}""")
+        pyload_3 = gen_msgv2_clan(packet , f"""[00FFFF][b][c]Player Name -->> [FFA500]{user_id}""")
         client.send(bytes.fromhex(pyload_3))
-        pyload_3 = gen_msgv2(packet , f"""[00FFFF][b][c]Player Name -->> [FFA500]{name}""")
+        pyload_3 = gen_msgv2(packet , f"""[00FFFF][b][c]Player Name -->> [FFA500]{user_id}""")
         client.send(bytes.fromhex(pyload_3))
         
 
