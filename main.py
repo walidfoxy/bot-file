@@ -22,21 +22,21 @@ def str2hex(s:str):
     return ''.join([hex(ord(c))[2:].zfill(2) for c in s])    
 def get_status(id):
     from time import sleep
-    import requests
+    
     
     r= requests.get('https://ff.garena.com/api/antihack/check_banned?lang=en&uid={}'.format(id)) 
     a = "0"
     if  a in r.text :
-        #acount clear
-        return ("Account Clear !" )
+        #acount ban
+        return ("الحساب غير مبند !!" )
         
     else : 
-        #acount ban
-        return ("Account Banned !")
+        #acount clear
+        return ('الحساب مبند !!! ')
         
         
 def get_info(user_id):
-    import requests
+    
     id = user_id
     cookies = {
         '_ga': 'GA1.1.2123120599.1674510784',
@@ -156,14 +156,10 @@ def getinfobyid(packet , user_id , client):
         client.send(bytes.fromhex(pyload_3))
         pyload_3 = gen_msgv2(packet , f"""[00FFFF][b][c]Player Name -->> [FFA500]{name}""")
         client.send(bytes.fromhex(pyload_3))
-        pyload_3 = gen_msgv2_clan(packet , f"""[00FF00]{stat}""")
+        pyload_3 = gen_msgv2_clan(packet , f"[00FF00]{stat}")
         client.send(bytes.fromhex(pyload_3))
-        pyload_3 = gen_msgv2(packet , f"""[00FF00]{stat}""")
+        pyload_3 = gen_msgv2(packet , f"[00FF00]{stat}")
         client.send(bytes.fromhex(pyload_3))
-        client.send(bytes.fromhex(pyload_3))
-        pyload_3 = gen_msgv2_clan(packet , f"""[00FFFF][b][c]Player Name -->> [FFA500]{name}""")
-        client.send(bytes.fromhex(pyload_3))
-        pyload_3 = gen_msgv2(packet , f"""[00FFFF][b][c]Player Name -->> [FFA500]{name}""")
         client.send(bytes.fromhex(pyload_3))
 
     else:
@@ -173,7 +169,7 @@ def getinfobyid(packet , user_id , client):
         client.send(bytes.fromhex(pyload_1))
         pyload_3 = gen_msgv2_clan(packet , f"""[00FFFF][b][c]Player Name -->> [FFA500]{name}""")
         client.send(bytes.fromhex(pyload_3))
-        pyload_3 = gen_msgv2(packet , f""""[00FFFF][b][c]Player Name -->> [FFA500]{name}"""")
+        pyload_3 = gen_msgv2(packet , f"""[00FFFF][b][c]Player Name -->> [FFA500]{name}""")
         client.send(bytes.fromhex(pyload_3))
         
 
@@ -204,6 +200,7 @@ def gen_msgv2_clan(packet  , replay):
 
     return finallyPacket
 invite= None
+
 
 
 
