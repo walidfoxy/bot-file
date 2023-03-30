@@ -28,11 +28,11 @@ def get_status(id):
     a = "0"
     if  a in r.text :
         #acount clear
-        return ("[00FFFF][b][c]Status : [00ff00][b][c] Account Clear !" )
+        return ("Account Clear !" )
         
     else : 
         #acount ban
-        return ("[00FFFF][b][c]Status : [ff0000][b][c] Account Banned !")
+        return ("Account Banned !")
         
         
 def get_info(user_id):
@@ -152,9 +152,9 @@ def getinfobyid(packet , user_id , client):
     name = get_info(user_id)
     stat = get_status(user_id)
     if "id" not in name:
-        pyload_3 = gen_msgv2_clan(packet , f"""[00FF00]{name}""")
+        pyload_3 = gen_msgv2_clan(packet , f"""[00FFFF][b][c]Player Name -->> [FFA500]{name}""")
         client.send(bytes.fromhex(pyload_3))
-        pyload_3 = gen_msgv2(packet , f"""[00FF00]{name}""")
+        pyload_3 = gen_msgv2(packet , f"""[00FFFF][b][c]Player Name -->> [FFA500]{name}""")
         client.send(bytes.fromhex(pyload_3))
         pyload_3 = gen_msgv2_clan(packet , f"""[00FF00]{stat}""")
         client.send(bytes.fromhex(pyload_3))
@@ -167,13 +167,13 @@ def getinfobyid(packet , user_id , client):
         client.send(bytes.fromhex(pyload_3))
 
     else:
-        pyload_1 = str(gen_msgv2_clan(packet , f"[FF0000] {name}"))
+        pyload_1 = str(gen_msgv2_clan(packet , f"""[00FFFF][b][c]Player Name -->> [FFA500]{name}"""))
         client.send(bytes.fromhex(pyload_1))
-        pyload_1 = str(gen_msgv2(packet , f"[FF0000]{name}"))
+        pyload_1 = str(gen_msgv2(packet , f"""[00FFFF][b][c]Player Name -->> [FFA500]{name}"""))
         client.send(bytes.fromhex(pyload_1))
-        pyload_3 = gen_msgv2_clan(packet , f"[00FF00]{name}")
+        pyload_3 = gen_msgv2_clan(packet , f"""[00FFFF][b][c]Player Name -->> [FFA500]{name}""")
         client.send(bytes.fromhex(pyload_3))
-        pyload_3 = gen_msgv2(packet , f"[00FF00]{name}")
+        pyload_3 = gen_msgv2(packet , f""""[00FFFF][b][c]Player Name -->> [FFA500]{name}"""")
         client.send(bytes.fromhex(pyload_3))
         
 
