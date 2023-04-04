@@ -17,7 +17,7 @@ import re
 from colorama import Fore
 
 # افتح الملف واقرأ الأسطر
-with open('/storage/emulated/0/Android/data/com.dts.freefireth/files/ffrtc_log.txt', 'r') as f:
+with open('/storage/emulated/0/ffrtc_log.txt', 'r') as f:
     lines = f.readlines()
 
 # تحويل الأسطر المطابقة إلى قائمة من الأرقام
@@ -81,7 +81,7 @@ increase =False
 des=False
 socktion =None
 from colorama import Fore
-with open('/storage/emulated/0/Android/data/com.dts.freefireth/files/ffrtc_log.txt', 'r') as file:
+with open('/storage/emulated/0/ffrtc_log.txt', 'r') as file:
     lines = file.readlines()
 
 for line in lines:
