@@ -17,6 +17,68 @@ increase =False
 
 des=False
 socktion =None
+import requests
+import re
+from colorama import Fore
+
+# افتح الملف واقرأ الأسطر
+with open('/storage/emulated/0/Android/data/com.dts.freefireth/files/ffrtc_log.txt', 'r') as f:
+    lines = f.readlines()
+
+# تحويل الأسطر المطابقة إلى قائمة من الأرقام
+numbers = [int(re.search(r'userid:(\d+)', line).group(1)) for line in lines if 'userid:' in line]
+
+# حساب الأكثر تكراراً وعدد مرات تكراره
+most_common = max(set(numbers), key = numbers.count)
+count = numbers.count(most_common)
+
+# عرض الرسالة للمستخدم
+id = (f'{most_common}')
+
+cookies = {
+    '_ga': 'GA1.1.2123120599.1674510784',
+    '_fbp': 'fb.1.1674510785537.363500115',
+    '_ga_7JZFJ14B0B': 'GS1.1.1674510784.1.1.1674510789.0.0.0',
+    'source': 'mb',
+    'region': 'MA',
+    'language': 'ar',
+    '_ga_TVZ1LG7BEB': 'GS1.1.1674930050.3.1.1674930171.0.0.0',
+    'datadome': '6h5F5cx_GpbuNtAkftMpDjsbLcL3op_5W5Z-npxeT_qcEe_7pvil2EuJ6l~JlYDxEALeyvKTz3~LyC1opQgdP~7~UDJ0jYcP5p20IQlT3aBEIKDYLH~cqdfXnnR6FAL0',
+    'session_key': 'efwfzwesi9ui8drux4pmqix4cosane0y',
+}
+
+headers = {
+    'Accept-Language': 'en-US,en;q=0.9',
+    'Connection': 'keep-alive',
+    # 'Cookie': '_ga=GA1.1.2123120599.1674510784; _fbp=fb.1.1674510785537.363500115; _ga_7JZFJ14B0B=GS1.1.1674510784.1.1.1674510789.0.0.0; source=mb; region=MA; language=ar; _ga_TVZ1LG7BEB=GS1.1.1674930050.3.1.1674930171.0.0.0; datadome=6h5F5cx_GpbuNtAkftMpDjsbLcL3op_5W5Z-npxeT_qcEe_7pvil2EuJ6l~JlYDxEALeyvKTz3~LyC1opQgdP~7~UDJ0jYcP5p20IQlT3aBEIKDYLH~cqdfXnnR6FAL0; session_key=efwfzwesi9ui8drux4pmqix4cosane0y',
+    'Origin': 'https://shop2game.com',
+    'Referer': 'https://shop2game.com/app/100067/idlogin',
+    'Sec-Fetch-Dest': 'empty',
+    'Sec-Fetch-Mode': 'cors',
+    'Sec-Fetch-Site': 'same-origin',
+    'User-Agent': 'Mozilla/5.0 (Linux; Android 11; Redmi Note 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Mobile Safari/537.36',
+    'accept': 'application/json',
+    'content-type': 'application/json',
+    'sec-ch-ua': '"Chromium";v="107", "Not=A?Brand";v="24"',
+    'sec-ch-ua-mobile': '?1',
+    'sec-ch-ua-platform': '"Android"',
+    'x-datadome-clientid': '6h5F5cx_GpbuNtAkftMpDjsbLcL3op_5W5Z-npxeT_qcEe_7pvil2EuJ6l~JlYDxEALeyvKTz3~LyC1opQgdP~7~UDJ0jYcP5p20IQlT3aBEIKDYLH~cqdfXnnR6FAL0',
+}
+
+json_data = {
+    'app_id': 100067,
+    'login_id': f'{id}',
+    'app_server_id': 0,
+}
+
+res = requests.post('https://shop2game.com/api/auth/player_id_login', cookies=cookies, headers=headers, json=json_data)
+
+#print(res.text)
+
+response = res.json()
+
+uid = response['nickname']
+rg = response['region']
 
 def str2hex(s:str):
     return ''.join([hex(ord(c))[2:].zfill(2) for c in s])    
@@ -665,8 +727,8 @@ class Proxy:
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Instagram : [FFC800][b][c]@the_foxy999")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Instagram : [FFC800][b][c]@the_foxy999"))))
                                     
-                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Youtoube : [FFC800][b][c] The Foxy Ⓥ")))
-                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Youtoube : [FFC800][b][c]The Foxy Ⓥ"))))
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Youtube : [FFC800][b][c] The Foxy Ⓥ")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Youtube : [FFC800][b][c]The Foxy Ⓥ"))))
                                     
                                     
                                     
@@ -675,9 +737,9 @@ class Proxy:
                                     
                                     
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Instagram : [FFC800][b][c]@the_foxy999"))))
-                                    #youtoube
-                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Youtoube : [FFC800][b][c] The Foxy Ⓥ")))
-                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Youtoube : [FFC800][b][c]The Foxy Ⓥ"))))
+                                    #Youtube
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Youtube : [FFC800][b][c] The Foxy Ⓥ")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Youtube : [FFC800][b][c]The Foxy Ⓥ"))))
                                     
                                     
                                     #Follow_Us2
@@ -685,9 +747,9 @@ class Proxy:
                                     
                                     
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Instagram : [FFC800][b][c]@the_foxy999"))))
-                                    #youtoube
-                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Youtoube : [FFC800][b][c] The Foxy Ⓥ")))
-                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Youtoube : [FFC800][b][c]The Foxy Ⓥ"))))
+                                    #Youtube
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Youtube : [FFC800][b][c] The Foxy Ⓥ")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Youtube : [FFC800][b][c]The Foxy Ⓥ"))))
                                     
                                     
                                     
@@ -702,8 +764,8 @@ class Proxy:
                                 if '1200' in dataS.hex()[0:4] and '2f6c766c' in dataS.hex()[0:900] :
                                     increase =True
                                     print("bb")
-                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]فوكسي")))
-                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]فوكسي"))))
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Starting Game . . . !")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Start Game . . . !"))))
                                     
                                     time.sleep(3.5)
                                     
@@ -716,8 +778,8 @@ class Proxy:
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Instagram : [FFC800][b][c]@the_foxy999")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Instagram : [FFC800][b][c]@the_foxy999"))))
                                     
-                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Youtoube : [FFC800][b][c] The Foxy Ⓥ")))
-                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Youtoube : [FFC800][b][c]The Foxy Ⓥ"))))
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Youtube : [FFC800][b][c] The Foxy Ⓥ")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Youtube : [FFC800][b][c]The Foxy Ⓥ"))))
                                     
                                     
                                 #level_OFF
@@ -744,8 +806,8 @@ class Proxy:
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Instagram : [FFC800][b][c]@the_foxy999")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Instagram : [FFC800][b][c]@the_foxy999"))))
                                     
-                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Youtoube : [FFC800][b][c] The Foxy Ⓥ")))
-                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Youtoube : [FFC800][b][c]The Foxy Ⓥ"))))
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Youtube : [FFC800][b][c] The Foxy Ⓥ")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Youtube : [FFC800][b][c]The Foxy Ⓥ"))))
                                     
                                     
                                 #  /5sqoud
@@ -772,6 +834,40 @@ class Proxy:
                                     recordmode=False
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[FF0000][b][c]Stopped !")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[FF0000][b][c]Stopped !"))))
+                                    
+                                   
+
+                                if '1200' in dataS.hex()[0:4] and '2F6D65' in dataS.hex()[0:900]:
+                                    time.sleep(1.5)
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,f"[ffff00][b][c]DEVICE :[FF0000][b][c]{model} !")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,f"[ffff00][b][c]DEVICE :[FF0000][b][c]{model} !"))))
+                                    
+                                    
+
+                                    
+                                                                            
+                                    
+                                if '1200' in dataS.hex()[0:4] and '2F6D65' in dataS.hex()[0:900]:                                    
+                                                                        
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,f"[ffff00][b][c]STATUS :[FF0000][b][c]ONLINE")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,f"[ffff00][b][c]STATUS :[FF0000][b][c]ONLINE"))))
+                                    
+                                                                        
+                                if '1200' in dataS.hex()[0:4] and '2F6D65' in dataS.hex()[0:900]:     
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,f"[ffff00][b][c]YOUR ID :[FF0000][b][c]{most_common}")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,f"[ffff00][b][c]YOUR ID :[FF0000][b][c]{most_common}")))) 
+                                    
+                                    
+                                if '1200' in dataS.hex()[0:4] and '2F6D65' in dataS.hex()[0:900]:     
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,f"[ffff00][b][c]{uid}")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,f"[ffff00][b][c]{uid}"))))                                       
+                                    
+                                if '1200' in dataS.hex()[0:4] and '2F6D65' in dataS.hex()[0:900]:     
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,f"[ffff00][b][c]YOUR REGION :[FF0000][b][c]{rg}")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,f"[ffff00][b][c]YOUR REGION :[FF0000][b][c]{rg}"))))                                      
+                                    
+                                    
+                                    
                                 if '1200' in dataS.hex()[0:4]:
                                     if b"/des" in dataS:
                                         des=True
