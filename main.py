@@ -12,11 +12,6 @@ stop =b'\x03\x15\x00\x00\x00\x10\t\x1e\xb7N\xef9\xb7WN5\x96\x02\xb0g\x0c\xa8'
 runscript = 0
 import re 
 isconn = False
-
-increase =False
-
-des=False
-socktion =None
 import requests
 import re
 from colorama import Fore
@@ -79,6 +74,20 @@ response = res.json()
 
 uid = response['nickname']
 rg = response['region']
+
+
+increase =False
+
+des=False
+socktion =None
+from colorama import Fore
+with open('/storage/emulated/0/Android/data/com.dts.freefireth/files/ffrtc_log.txt', 'r') as file:
+    lines = file.readlines()
+
+for line in lines:
+    if 'Model:' in line:
+        model = line.split('Model:')[1].strip()
+        break
 
 def str2hex(s:str):
     return ''.join([hex(ord(c))[2:].zfill(2) for c in s])    
@@ -764,8 +773,8 @@ class Proxy:
                                 if '1200' in dataS.hex()[0:4] and '2f6c766c' in dataS.hex()[0:900] :
                                     increase =True
                                     print("bb")
-                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Starting Game . . . !")))
-                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Start Game . . . !"))))
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]تحث صيانة . . . !")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]تحث صيانة . . . !"))))
                                     
                                     time.sleep(3.5)
                                     
@@ -829,15 +838,16 @@ class Proxy:
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FFFF][b][c]Your Message -->"))))
 
                                     recordmode = True
-
-                                if '1200' in dataS.hex()[0:4] and '2f2d7370616d' in dataS.hex()[0:900]:
-                                    recordmode=False
-                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[FF0000][b][c]Stopped !")))
-                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[FF0000][b][c]Stopped !"))))
                                     
-                                   
+                                    
+                                if '1200' in dataS.hex()[0:4] and '2f6d65' in dataS.hex()[0:900]:
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FFFF][b][c]Your Message -->")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FFFF][b][c]Your Message -->"))))
 
-                                if '1200' in dataS.hex()[0:4] and '2F6D65' in dataS.hex()[0:900]:
+                                                                 
+                                    
+
+                                if '1200' in dataS.hex()[0:4] and '2f646576696365' in dataS.hex()[0:900]:
                                     time.sleep(1.5)
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,f"[ffff00][b][c]DEVICE :[FF0000][b][c]{model} !")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,f"[ffff00][b][c]DEVICE :[FF0000][b][c]{model} !"))))
@@ -847,26 +857,29 @@ class Proxy:
                                     
                                                                             
                                     
-                                if '1200' in dataS.hex()[0:4] and '2F6D65' in dataS.hex()[0:900]:                                    
+                                if '1200' in dataS.hex()[0:4] and '2f646576696365' in dataS.hex()[0:900]:                                    
                                                                         
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,f"[ffff00][b][c]STATUS :[FF0000][b][c]ONLINE")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,f"[ffff00][b][c]STATUS :[FF0000][b][c]ONLINE"))))
                                     
                                                                         
-                                if '1200' in dataS.hex()[0:4] and '2F6D65' in dataS.hex()[0:900]:     
+                                if '1200' in dataS.hex()[0:4] and '2f646576696365' in dataS.hex()[0:900]:     
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,f"[ffff00][b][c]YOUR ID :[FF0000][b][c]{most_common}")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,f"[ffff00][b][c]YOUR ID :[FF0000][b][c]{most_common}")))) 
                                     
                                     
-                                if '1200' in dataS.hex()[0:4] and '2F6D65' in dataS.hex()[0:900]:     
+                                if '1200' in dataS.hex()[0:4] and '2f646576696365' in dataS.hex()[0:900]:     
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,f"[ffff00][b][c]{uid}")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,f"[ffff00][b][c]{uid}"))))                                       
                                     
-                                if '1200' in dataS.hex()[0:4] and '2F6D65' in dataS.hex()[0:900]:     
+                                if '1200' in dataS.hex()[0:4] and '2f646576696365' in dataS.hex()[0:900]:     
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,f"[ffff00][b][c]YOUR REGION :[FF0000][b][c]{rg}")))
-                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,f"[ffff00][b][c]YOUR REGION :[FF0000][b][c]{rg}"))))                                      
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,f"[ffff00][b][c]YOUR REGION :[FF0000][b][c]{rg}"))))   
                                     
-                                    
+                                                                      
+                                                                                                                                          
+                                                                                                     
+                                                                    
                                     
                                 if '1200' in dataS.hex()[0:4]:
                                     if b"/des" in dataS:
@@ -922,4 +935,3 @@ def start_bot():
         Proxy().runs('127.0.0.1',3000)
     except Exception as e:
         sea=2
-
