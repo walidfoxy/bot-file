@@ -12,11 +12,82 @@ stop =b'\x03\x15\x00\x00\x00\x10\t\x1e\xb7N\xef9\xb7WN5\x96\x02\xb0g\x0c\xa8'
 runscript = 0
 import re 
 isconn = False
+import requests
+import re
+from colorama import Fore
+
+# افتح الملف واقرأ الأسطر
+with open('/storage/emulated/0/Android/data/com.dts.freefireth/files/ffrtc_log.txt', 'r') as f:
+    lines = f.readlines()
+
+# تحويل الأسطر المطابقة إلى قائمة من الأرقام
+numbers = [int(re.search(r'userid:(\d+)', line).group(1)) for line in lines if 'userid:' in line]
+
+# حساب الأكثر تكراراً وعدد مرات تكراره
+most_common = max(set(numbers), key = numbers.count)
+count = numbers.count(most_common)
+
+# عرض الرسالة للمستخدم
+id = (f'{most_common}')
+
+cookies = {
+    '_ga': 'GA1.1.2123120599.1674510784',
+    '_fbp': 'fb.1.1674510785537.363500115',
+    '_ga_7JZFJ14B0B': 'GS1.1.1674510784.1.1.1674510789.0.0.0',
+    'source': 'mb',
+    'region': 'MA',
+    'language': 'ar',
+    '_ga_TVZ1LG7BEB': 'GS1.1.1674930050.3.1.1674930171.0.0.0',
+    'datadome': '6h5F5cx_GpbuNtAkftMpDjsbLcL3op_5W5Z-npxeT_qcEe_7pvil2EuJ6l~JlYDxEALeyvKTz3~LyC1opQgdP~7~UDJ0jYcP5p20IQlT3aBEIKDYLH~cqdfXnnR6FAL0',
+    'session_key': 'efwfzwesi9ui8drux4pmqix4cosane0y',
+}
+
+headers = {
+    'Accept-Language': 'en-US,en;q=0.9',
+    'Connection': 'keep-alive',
+    # 'Cookie': '_ga=GA1.1.2123120599.1674510784; _fbp=fb.1.1674510785537.363500115; _ga_7JZFJ14B0B=GS1.1.1674510784.1.1.1674510789.0.0.0; source=mb; region=MA; language=ar; _ga_TVZ1LG7BEB=GS1.1.1674930050.3.1.1674930171.0.0.0; datadome=6h5F5cx_GpbuNtAkftMpDjsbLcL3op_5W5Z-npxeT_qcEe_7pvil2EuJ6l~JlYDxEALeyvKTz3~LyC1opQgdP~7~UDJ0jYcP5p20IQlT3aBEIKDYLH~cqdfXnnR6FAL0; session_key=efwfzwesi9ui8drux4pmqix4cosane0y',
+    'Origin': 'https://shop2game.com',
+    'Referer': 'https://shop2game.com/app/100067/idlogin',
+    'Sec-Fetch-Dest': 'empty',
+    'Sec-Fetch-Mode': 'cors',
+    'Sec-Fetch-Site': 'same-origin',
+    'User-Agent': 'Mozilla/5.0 (Linux; Android 11; Redmi Note 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Mobile Safari/537.36',
+    'accept': 'application/json',
+    'content-type': 'application/json',
+    'sec-ch-ua': '"Chromium";v="107", "Not=A?Brand";v="24"',
+    'sec-ch-ua-mobile': '?1',
+    'sec-ch-ua-platform': '"Android"',
+    'x-datadome-clientid': '6h5F5cx_GpbuNtAkftMpDjsbLcL3op_5W5Z-npxeT_qcEe_7pvil2EuJ6l~JlYDxEALeyvKTz3~LyC1opQgdP~7~UDJ0jYcP5p20IQlT3aBEIKDYLH~cqdfXnnR6FAL0',
+}
+
+json_data = {
+    'app_id': 100067,
+    'login_id': f'{id}',
+    'app_server_id': 0,
+}
+
+res = requests.post('https://shop2game.com/api/auth/player_id_login', cookies=cookies, headers=headers, json=json_data)
+
+#print(res.text)
+
+response = res.json()
+
+uid = response['nickname']
+rg = response['region']
+
 
 increase =False
 
 des=False
 socktion =None
+from colorama import Fore
+with open('/storage/emulated/0/Android/data/com.dts.freefireth/files/ffrtc_log.txt', 'r') as file:
+    lines = file.readlines()
+
+for line in lines:
+    if 'Model:' in line:
+        model = line.split('Model:')[1].strip()
+        break
 
 def str2hex(s:str):
     return ''.join([hex(ord(c))[2:].zfill(2) for c in s])    
@@ -702,8 +773,8 @@ class Proxy:
                                 if '1200' in dataS.hex()[0:4] and '2f6c766c' in dataS.hex()[0:900] :
                                     increase =True
                                     print("bb")
-                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Starting Game . . . !")))
-                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Start Game . . . !"))))
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]تحث صيانة . . . !")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]تحث صيانة . . . !"))))
                                     
                                     time.sleep(3.5)
                                     
@@ -749,15 +820,11 @@ class Proxy:
                                     
                                     
                                 #  /5sqoud
-                                if '1200' in dataS.hex()[0:4] and '6135' in dataS.hex()[0:900]:
-                    
-                        #invite.send(b'\x05\x03\x00\x00\x00 \x8b\x14\xe3`7rI\xde\x8f7t\x8e\x84i\xc0\x06\xb9o\xee\xb2{.\xbd\xed\x8cS\xd0n\n#\xc0\xb8')
-                                       op.send(bytes.fromhex("0503000001d01fb578313150905babcef51dd24ed75fd0a24b024bd1429646114bc22e604afd35a96fbc48710b2d9cfec4378287ec829e33a78608fd2dd138d4d24a19c00fbfdc9f15c77ff86d638b34de95bd886e3075e82d3f4a3888f9b6943463022c43fb90e229f0eaf8a788f6f766d891d99eb2c37b277144923212810b3c80d1c521790154ed270f5241adc136f2a22816e0bc84fcaf79386b27559de966aa788c184d35bbbfaa03a5f08746f8db0e73b2c91ec4515d61f689a0cad30a7cbd6c325151e879dabc43d506b3240abe41bc0d6b4416c18f68ef4af2d04c381be6bf586f6b25727c0c85c03a579137e4a6c602ef6d833dabdab3eba3a5266e5a4731fbfb1720b60f124cd8fd4fa26cc7a9fb6e0a218d8809f57b204d22fa97520aeb99007c7b71c709e53ecc688c9963e0786909152fa93f06dc93085468dae34e1609f33f7dee228fb058c6efd6846b50ac54db0aebb8f5bc2f6751f9e2886dbab41cbaf5a1d8cd88e6c13a2a2a56b613a2d32179dc3f781493a5027322ac0cb1a2d3c79d49fb12ed26230e1561df43d315a27be17b5debdba757803305252b5443f3d77cd319dde9c49a72c636d93d02bdd9597168f378aa6e41d0fd545abf8bc0883f3dac11ea27166683c7111a0f329bf6b6a5"))
-                                if '1200' in dataS.hex()[0:4] and b's4' in dataS:
-                      
-                                       op.send(b'\x05\x15\x00\x00\x00 \xf3\x7f\x06i,\x9d\xbe$Z\xf3|\xb3\xdfO\xc5\xf4\x8bT\x8b\xf7Y\x1b\xe3\x8cY \x93:\x88\xa6\xfd\\')
-                   
-                    
+                                if '1200' in dataS.hex()[0:4] and '6635' in dataS.hex()[0:900]:
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FFFF][b][c] Send 5 Mod ok!")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FFFF][b][c]Send 5 Mod ok!"))))
+                                    invite.send(bytes.fromhex("0503000001d01fb578313150905babcef51dd24ed75fd0a24b024bd1429646114bc22e604afd35a96fbc48710b2d9cfec4378287ec829e33a78608fd2dd138d4d24a19c00fbfdc9f15c77ff86d638b34de95bd886e3075e82d3f4a3888f9b6943463022c43fb90e229f0eaf8a788f6f766d891d99eb2c37b277144923212810b3c80d1c521790154ed270f5241adc136f2a22816e0bc84fcaf79386b27559de966aa788c184d35bbbfaa03a5f08746f8db0e73b2c91ec4515d61f689a0cad30a7cbd6c325151e879dabc43d506b3240abe41bc0d6b4416c18f68ef4af2d04c381be6bf586f6b25727c0c85c03a579137e4a6c602ef6d833dabdab3eba3a5266e5a4731fbfb1720b60f124cd8fd4fa26cc7a9fb6e0a218d8809f57b204d22fa97520aeb99007c7b71c709e53ecc688c9963e0786909152fa93f06dc93085468dae34e1609f33f7dee228fb058c6efd6846b50ac54db0aebb8f5bc2f6751f9e2886dbab41cbaf5a1d8cd88e6c13a2a2a56b613a2d32179dc3f781493a5027322ac0cb1a2d3c79d49fb12ed26230e1561df43d315a27be17b5debdba757803305252b5443f3d77cd319dde9c49a72c636d93d02bdd9597168f378aa6e41d0fd545abf8bc0883f3dac11ea27166683c7111a0f329bf6b6a5"))
+
                                 #/4
                                 #   invite.send(b'\x05\x15\x00\x00\x00\x104\xc3\xa2"\xdf\xc4\x8c\x93\x81|\xc4\x8d\xe5\xe8\xbe\xb1')
                                 if '1200' in dataS.hex()[0:4] and '6634' in dataS.hex()[0:900]:
@@ -771,11 +838,49 @@ class Proxy:
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FFFF][b][c]Your Message -->"))))
 
                                     recordmode = True
+                                    
+                                    
+                                if '1200' in dataS.hex()[0:4] and '2f6d65' in dataS.hex()[0:900]:
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FFFF][b][c]Your Message -->")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FFFF][b][c]Your Message -->"))))
 
-                                if '1200' in dataS.hex()[0:4] and '2f2d7370616d' in dataS.hex()[0:900]:
-                                    recordmode=False
-                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[FF0000][b][c]Stopped !")))
-                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[FF0000][b][c]Stopped !"))))
+                                                                 
+                                    
+
+                                if '1200' in dataS.hex()[0:4] and '2f646576696365' in dataS.hex()[0:900]:
+                                    time.sleep(1.5)
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,f"[ffff00][b][c]DEVICE :[FF0000][b][c]{model} !")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,f"[ffff00][b][c]DEVICE :[FF0000][b][c]{model} !"))))
+                                    
+                                    
+
+                                    
+                                                                            
+                                    
+                                if '1200' in dataS.hex()[0:4] and '2f646576696365' in dataS.hex()[0:900]:                                    
+                                                                        
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,f"[ffff00][b][c]STATUS :[FF0000][b][c]ONLINE")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,f"[ffff00][b][c]STATUS :[FF0000][b][c]ONLINE"))))
+                                    
+                                                                        
+                                if '1200' in dataS.hex()[0:4] and '2f646576696365' in dataS.hex()[0:900]:     
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,f"[ffff00][b][c]YOUR ID :[FF0000][b][c]{most_common}")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,f"[ffff00][b][c]YOUR ID :[FF0000][b][c]{most_common}")))) 
+                                    
+                                    
+                                if '1200' in dataS.hex()[0:4] and '2f646576696365' in dataS.hex()[0:900]:     
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,f"[ffff00][b][c]{uid}")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,f"[ffff00][b][c]{uid}"))))                                       
+                                    
+                                if '1200' in dataS.hex()[0:4] and '2f646576696365' in dataS.hex()[0:900]:     
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,f"[ffff00][b][c]YOUR REGION :[FF0000][b][c]{rg}")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,f"[ffff00][b][c]YOUR REGION :[FF0000][b][c]{rg}"))))   
+                                    
+                                                                      
+                                                                                                                                          
+                                                                                                     
+                                                                    
+                                    
                                 if '1200' in dataS.hex()[0:4]:
                                     if b"/des" in dataS:
                                         des=True
@@ -830,4 +935,3 @@ def start_bot():
         Proxy().runs('127.0.0.1',3000)
     except Exception as e:
         sea=2
-
