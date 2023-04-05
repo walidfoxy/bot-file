@@ -862,7 +862,12 @@ class Proxy:
                                     statues= False
                                     
 
-                                 
+                                 #test
+                                if  '0f00' in dataS.hex()[0:4] and der==True :
+                                        der=False
+                                        client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Stop ok!"))))
+
+                                   
                                  
                                  #uid
 
