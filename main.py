@@ -286,19 +286,6 @@ def spam(server,packet):
 
             break
 
-def destroy(remote,dataC):
-
-    var= 0
-    for i in range(50):
-
-        var= var+1
-
-        time.sleep(0.010)
-        for i in range(10):
-
-            remote.send(dataC)
-    time.sleep(0.5)
-
 
 
 
@@ -751,7 +738,7 @@ class Proxy:
                                 if '1200' in dataS.hex()[0:4] and '2f6c766c' in dataS.hex()[0:900] :
                                     increase =True
                                     print("bb")
-                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Starting Game . . . !")))
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Start Game . . . !")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Start Game . . . !"))))
                                     
                                     time.sleep(3.5)
@@ -818,11 +805,10 @@ class Proxy:
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FFFF][b][c]Your Message -->"))))
 
                                     
-                                    time.sleep(3.5)
+                                    
                                     
                                     recordmode = True
-                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FFFF][b][c]Starting Now -->")))
-                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FFFF][b][c]Starting Now -->"))))
+     
                                 if '1200' in dataS.hex()[0:4] and '2f2d7370616d' in dataS.hex()[0:900]:
                                     recordmode=False
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[FF0000][b][c]Stopped !")))
