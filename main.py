@@ -830,8 +830,8 @@ class Proxy:
                                  #spam data_back
                                  
                                 if '1200' in dataS.hex()[0:4]:
-                                    if b"/-der" in dataS:
-                                        der=False
+                                    if b"/der" in dataS:
+                                        der=True
                                         threading.Thread(target=self.foxy , args=(self.data_join,)).start()
                                         
                                         client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Stop ok!"))))
@@ -842,7 +842,8 @@ class Proxy:
                                     #offilin
                                 if  '0f00' in dataS.hex()[0:4] and der==True :
                                         der=False
-                    
+                                        client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Stop ok!"))))
+
                                    
                                     
                                     #false
