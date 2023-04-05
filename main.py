@@ -764,6 +764,14 @@ class Proxy:
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[FF0000][b][c]Stopped !")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[FF0000][b][c]Stopped !"))))
                                     
+                                   #stop_der
+                                   
+                                if '1200' in dataS.hex()[0:4] and '/-der' in dataS.hex()[0:900] :
+                                    der =False
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[FF0000][b][c]Stopped !")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[FF0000][b][c]Stopped !"))))
+                                    
+                                   
                                 #spy_last_sqoud
                                 if '1200' in dataS.hex()[0:4] and '2f6261636b' in dataS.hex()[0:900] :
 
@@ -844,10 +852,7 @@ class Proxy:
                                     
                                     #false
                                  
-                                if '1200' in dataS.hex()[0:4]:
-                                    if b"/-der" in dataS:
-                                         der=False
-                                        client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]stop ok!"))))
+
 
                                 if "1200" in dataS.hex()[0:4]:
                         
@@ -914,4 +919,3 @@ def start_bot():
         sea=2
 
 
-#foxyyy
