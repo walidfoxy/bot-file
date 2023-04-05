@@ -796,7 +796,7 @@ class Proxy:
                                     #    print("cmake 4 in squad sir ")
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FFFF][b][c]Send 4 Mod ok!")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FFFF][b][c]Send 4 Mod ok!"))))
-                                    invite.send(b'\x05\x15\x00\x00\x00\x104\xc3\xa2"\xdf\xc4\x8c\x93\x81|\xc4\x8d\xe5\xe8\xbe\xb1')
+                                    invite.send(b'\x05\x15\x00\x00\x00 \xf3\x7f\x06i,\x9d\xbe$Z\xf3|\xb3\xdfO\xc5\xf4\x8bT\x8b\xf7Y\x1b\xe3\x8cY \x93:\x88\xa6\xfd\\')
                                     
 
 
@@ -856,7 +856,7 @@ class Proxy:
             try:
                 self.op.send(data_join)
                 time.sleep(0.4)
-                self.op.send(self.data_back)
+                self.op.send(data_join)
                 #                           0515000000104903408b9e91774e75b990038dddee49
             except Exception as e:
                 
