@@ -817,8 +817,12 @@ class Proxy:
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FFFF][b][c]Your Message -->")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FFFF][b][c]Your Message -->"))))
 
+                                    
+                                    time.sleep(3.5)
+                                    
                                     recordmode = True
-
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FFFF][b][c]Starting Now -->")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FFFF][b][c]Starting Now -->"))))
                                 if '1200' in dataS.hex()[0:4] and '2f2d7370616d' in dataS.hex()[0:900]:
                                     recordmode=False
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[FF0000][b][c]Stopped !")))
@@ -877,3 +881,5 @@ def start_bot():
         Proxy().runs('127.0.0.1',3000)
     except Exception as e:
         sea=2
+
+
