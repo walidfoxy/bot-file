@@ -839,6 +839,11 @@ class Proxy:
 
                                     statues= False
                                     
+                                    #false
+                                if  '0f00' in dataS.hex()[0:4] and des==True :
+                                    des=False
+                                        
+                    
                                     
                                 if "1200" in dataS.hex()[0:4]:
                         
@@ -865,6 +870,10 @@ class Proxy:
 
                                 if client.send(dataS) <= 0:
                                     break
+        
+        
+        
+        
         
     def foxy( self , data_join):
         global des
