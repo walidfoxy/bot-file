@@ -142,8 +142,8 @@ def gen_msgv2(packet  , replay):
 
 def getinfobyid(packet , user_id , client):
     
-    load = gen_msgv2(packet , """[00FFFF][b][c]Player Info -->>""")
-    load2 =gen_msgv2_clan(packet , """[00FFFF][b][c]Player Info -->> """) 
+    load = gen_msgv2(packet , """[FFC800][b][c]Player Info !""")
+    load2 =gen_msgv2_clan(packet , """[FFC800][b][c]Player Info ! """) 
     for i in range(1):
         time.sleep(1.5)
         client.send(bytes.fromhex(load))
@@ -152,9 +152,15 @@ def getinfobyid(packet , user_id , client):
     name = get_info(user_id)
     stat = get_status(user_id)
     if "id" not in name:
-        pyload_3 = gen_msgv2_clan(packet , f"""[00FFFF][b][c]{name}""")
+    #name
+        pyload_3 = gen_msgv2_clan(packet , f"""[00FFFF][b][c]Player Name -->>""")
         client.send(bytes.fromhex(pyload_3))
-        pyload_3 = gen_msgv2(packet , f"""[00FFFF][b][c]{name}""")
+        pyload_3 = gen_msgv2(packet , f"""[00FFFF][b][c]Player Name -->>""")
+        client.send(bytes.fromhex(pyload_3))
+        #name-end
+        pyload_3 = gen_msgv2_clan(packet , f"""[00FF00][b][c]{name}""")
+        client.send(bytes.fromhex(pyload_3))
+        pyload_3 = gen_msgv2(packet , f"""[00FF00][b][c]{name}""")
         client.send(bytes.fromhex(pyload_3))
         
         pyload_3 = gen_msgv2_clan(packet , f"""[00FFFF][b][c]Status : [00ff00][b][c] {stat}""")
@@ -164,13 +170,28 @@ def getinfobyid(packet , user_id , client):
         client.send(bytes.fromhex(pyload_3))
 
     else:
-        pyload_1 = str(gen_msgv2_clan(packet , f"""[00FFFF][b][c]{name}"""))
-        client.send(bytes.fromhex(pyload_1))
-        pyload_1 = str(gen_msgv2(packet , f"""[00FFFF][b][c]{name}"""))
-        client.send(bytes.fromhex(pyload_1))
-        pyload_3 = gen_msgv2_clan(packet , f"""[00FFFF][b][c]{name}""")
+    #name
+        pyload_3 = gen_msgv2_clan(packet , f"""[00FFFF][b][c]Player Name -->>""")
         client.send(bytes.fromhex(pyload_3))
-        pyload_3 = gen_msgv2(packet , f"""[00FFFF][b][c]{name}""")
+        pyload_3 = gen_msgv2(packet , f"""[00FFFF][b][c]Player Name -->>""")
+        client.send(bytes.fromhex(pyload_3))
+        #name-end
+        
+        pyload_1 = str(gen_msgv2_clan(packet , f"""[00FF00][b][c]{name}"""))
+        client.send(bytes.fromhex(pyload_1))
+        pyload_1 = str(gen_msgv2(packet , f"""[00FF00][b][c]{name}"""))
+        client.send(bytes.fromhex(pyload_1))
+            #name
+           
+        pyload_3 = gen_msgv2_clan(packet , f"""[00FFFF][b][c]Player Name -->>""")
+        client.send(bytes.fromhex(pyload_3))
+        pyload_3 = gen_msgv2(packet , f"""[00FFFF][b][c]Player Name -->>""")
+        client.send(bytes.fromhex(pyload_3))
+        #name-end
+        
+        pyload_3 = gen_msgv2_clan(packet , f"""[00FF00][b][c]{name}""")
+        client.send(bytes.fromhex(pyload_3))
+        pyload_3 = gen_msgv2(packet , f"""[00FF00][b][c]{name}""")
         client.send(bytes.fromhex(pyload_3))
         
 
