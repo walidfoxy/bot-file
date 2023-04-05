@@ -533,7 +533,7 @@ class Proxy:
                         dataC = client.recv(999999)
 
 
-                        if port ==39800 or port ==39698:
+                        if port ==39801 or port ==39698:
                             isconn=True
                         if  "39698" in str(remote) :
                             self.op = remote
