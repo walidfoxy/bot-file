@@ -33,60 +33,7 @@ def get_status(id):
     else : 
         #acount ban
         return ('[ff0000]Account Ban ! ')
-
-def get_uid(foxy_uid):
-    
-    id = foxy_uid
-    cookies = {
-        '_ga': 'GA1.1.2123120599.1674510784',
-        '_fbp': 'fb.1.1674510785537.363500115',
-        '_ga_7JZFJ14B0B': 'GS1.1.1674510784.1.1.1674510789.0.0.0',
-        'source': 'mb',
-        'region': 'MA',
-        'language': 'ar',
-        '_ga_TVZ1LG7BEB': 'GS1.1.1674930050.3.1.1674930171.0.0.0',
-        'datadome': '6h5F5cx_GpbuNtAkftMpDjsbLcL3op_5W5Z-npxeT_qcEe_7pvil2EuJ6l~JlYDxEALeyvKTz3~LyC1opQgdP~7~UDJ0jYcP5p20IQlT3aBEIKDYLH~cqdfXnnR6FAL0',
-        'session_key': 'efwfzwesi9ui8drux4pmqix4cosane0y',
-    }
-
-    headers = {
-        'Accept-Language': 'en-US,en;q=0.9',
-        'Connection': 'keep-alive',
-        # 'Cookie': '_ga=GA1.1.2123120599.1674510784; _fbp=fb.1.1674510785537.363500115; _ga_7JZFJ14B0B=GS1.1.1674510784.1.1.1674510789.0.0.0; source=mb; region=MA; language=ar; _ga_TVZ1LG7BEB=GS1.1.1674930050.3.1.1674930171.0.0.0; datadome=6h5F5cx_GpbuNtAkftMpDjsbLcL3op_5W5Z-npxeT_qcEe_7pvil2EuJ6l~JlYDxEALeyvKTz3~LyC1opQgdP~7~UDJ0jYcP5p20IQlT3aBEIKDYLH~cqdfXnnR6FAL0; session_key=efwfzwesi9ui8drux4pmqix4cosane0y',
-        'Origin': 'https://shop2game.com',
-        'Referer': 'https://shop2game.com/app/100067/idlogin',
-        'Sec-Fetch-Dest': 'empty',
-        'Sec-Fetch-Mode': 'cors',
-        'Sec-Fetch-Site': 'same-origin',
-        'User-Agent': 'Mozilla/5.0 (Linux; Android 11; Redmi Note 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Mobile Safari/537.36',
-        'accept': 'application/json',
-        'content-type': 'application/json',
-        'sec-ch-ua': '"Chromium";v="107", "Not=A?Brand";v="24"',
-        'sec-ch-ua-mobile': '?1',
-        'sec-ch-ua-platform': '"Android"',
-        'x-datadome-clientid': '20ybNpB7Icy69F~RH~hbsvm6XFZADUC-2_--r5gBq49C8uqabutQ8DV_IZp0cw2y5Erk-KbiNZa-rTk1PKC900mf3lpvEP~95Pmut_FlHnIXqxqC4znsakWbqSX3gGlg',
-    }
-
-    json_data = {
-        'app_id': 100067,
-        'login_id': f'{id}',
-        'app_server_id': 0,
-    }
-
-
-    res = requests.post('https://shop2game.com/api/auth/player_id_login', cookies=cookies, headers=headers, json=json_data)
-
-#print(res.text)
-
-    response = res.json()
-    try : 
-        region = response['region']
-    except:
-        name=response
-
-    return name 
-
-#iiu
+        
         
 def get_info(user_id):
     
@@ -193,7 +140,7 @@ def gen_msgv2(packet  , replay):
 
 
 
-def getinfobyid(packet , user_id , foxy_uid , client):
+def getinfobyid(packet , user_id , client):
     
     load = gen_msgv2(packet , """[FFC800][b][c]Player Info !""")
     load2 =gen_msgv2_clan(packet , """[FFC800][b][c]Player Info ! """) 
@@ -204,24 +151,7 @@ def getinfobyid(packet , user_id , foxy_uid , client):
     
     name = get_info(user_id)
     stat = get_status(user_id)
-    region = get_uid(foxy_uid)
     if "id" not in name:
-    
-    
-    
-            #uid
-        pyload_3 = gen_msgv2_clan(packet , f"""[00FFFF][b][c]Player RG -->>""")
-        client.send(bytes.fromhex(pyload_3))
-        pyload_3 = gen_msgv2(packet , f"""[00FFFF][b][c]Player RG -->>""")
-        client.send(bytes.fromhex(pyload_3))
-        #uid
-        pyload_3 = gen_msgv2_clan(packet , f"""[00ff00][b][c]{region}""")
-        client.send(bytes.fromhex(pyload_3))
-        pyload_3 = gen_msgv2(packet , f"""[00ff00][b][c]{region}""")
-        client.send(bytes.fromhex(pyload_3))
-        client.send(bytes.fromhex(pyload_3))
-    
-    
     
 
             #uid
