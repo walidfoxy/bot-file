@@ -855,7 +855,7 @@ class Proxy:
         while des==True:
             try:
                 self.op.send(data_join)
-                
+                time.sleep(900.9)
                
                 #                           0515000000104903408b9e91774e75b990038dddee49
             except Exception as e:
