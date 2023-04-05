@@ -151,7 +151,7 @@ def getinfobyid(packet , user_id , client):
         client.send(bytes.fromhex(load2))
     
     name = get_info(user_id)
-   
+    rg = get_info(user_id)
     stat = get_status(user_id)
     if "id" not in name:
     
