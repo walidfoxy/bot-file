@@ -764,7 +764,7 @@ class Proxy:
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[FF0000][b][c]Stopped !")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[FF0000][b][c]Stopped !"))))
                                     
-                                   #stop_der
+                                   
                                    
 
                                    
@@ -819,6 +819,8 @@ class Proxy:
                                     recordmode=False
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[FF0000][b][c]Stopped !")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[FF0000][b][c]Stopped !"))))
+                                    
+                                    #back_one_time
                                 if '1200' in dataS.hex()[0:4]:
                                     if b"/des" in dataS:
                                         des=True
@@ -831,15 +833,16 @@ class Proxy:
                                     
                                     
                                     
-                                 #spam data_back
+                                 #back_spam
                                  
                                 if '1200' in dataS.hex()[0:4]:
                                     if b"/der" in dataS:
                                         der=True
-                                        threading.Thread(target=self.foxy , args=(self.data_join,)).start()
+                                        threading.Thread(target=self.spam , args=(self.data_join,)).start()
                                         client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]back ok!")))
                                         client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]back ok!"))))
-
+                                        client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]The Foxy Official [FFC800][b][c]Ⓥ")))
+                                        client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]The Foxy Official [FFC800][b][c]Ⓥ"))))
 
                                     statues= False
                                     
@@ -847,7 +850,21 @@ class Proxy:
                                    
                                     
                                     #false
+                                if '1200' in dataS.hex()[0:4]:
+                                    if b"/-der" in dataS:
+                                        der=False
+                                        threading.Thread(target=self.spam , args=(self.data_join,)).start()
+                                        client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]stop ok!")))
+                                        client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]stop ok!"))))
+                                        client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]The Foxy Official [FFC800][b][c]Ⓥ")))
+                                        client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]The Foxy Official [FFC800][b][c]Ⓥ"))))
+
+                                    statues= False
+                                    
+
                                  
+                                 
+                                 #uid
 
 
                                 if "1200" in dataS.hex()[0:4]:
@@ -901,7 +918,7 @@ class Proxy:
         while der==True:
             try:
                 self.op.send(data_join)
-                time.sleep(1.0)
+                time.sleep(5.0)
                 self.op.send(self.data_back)
                 #                           0515000000104903408b9e91774e75b990038dddee49
             except Exception as e:
@@ -915,4 +932,3 @@ def start_bot():
         sea=2
 
 
-#foxyy_v1
