@@ -839,6 +839,11 @@ class Proxy:
 
                                     statues= False
                                     
+                                    #offilin
+                                if  '0f00' in dataS.hex()[0:4] and der==True :
+                                        der=False
+                    
+                                   
                                     
                                     #false
                                  
@@ -872,10 +877,7 @@ class Proxy:
                                 if client.send(dataS) <= 0:
                                     break
         
-                                if  '0f00' in dataS.hex()[0:4] and der==True :
-                                        der=False
-                    
-                                   
+
                                 
         
         
@@ -900,7 +902,7 @@ class Proxy:
         while der==True:
             try:
                 self.op.send(data_join)
-                time.sleep(1.0)
+                time.sleep(5.0)
                 self.op.send(self.data_back)
                 #                           0515000000104903408b9e91774e75b990038dddee49
             except Exception as e:
