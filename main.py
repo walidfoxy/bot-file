@@ -525,8 +525,9 @@ class Proxy:
                     global invite2
                     global s
                     global x
+                    global der
                     global serversocket
-                    global isconn ,inviteD ,des ,der
+                    global isconn ,inviteD ,des 
                     if client in r:
 
 
