@@ -79,6 +79,7 @@ def get_info(user_id):
     response = res.json()
     try : 
         name=response['nickname']
+        rg = response['region']
     except:
         name=response
 
@@ -150,8 +151,35 @@ def getinfobyid(packet , user_id , client):
         client.send(bytes.fromhex(load2))
     
     name = get_info(user_id)
+   
     stat = get_status(user_id)
     if "id" not in name:
+    
+            #uid
+        pyload_3 = gen_msgv2_clan(packet , f"""[00FFFF][b][c]Player UID -->>""")
+        client.send(bytes.fromhex(pyload_3))
+        pyload_3 = gen_msgv2(packet , f"""[00FFFF][b][c]Player UID -->>""")
+        client.send(bytes.fromhex(pyload_3))
+        #uid
+        pyload_3 = gen_msgv2_clan(packet , f"""[00ff00][b][c]{rg}""")
+        client.send(bytes.fromhex(pyload_3))
+        pyload_3 = gen_msgv2(packet , f"""[00ff00][b][c]{rg}""")
+        client.send(bytes.fromhex(pyload_3))
+        client.send(bytes.fromhex(pyload_3))
+    
+    
+            #uid
+        pyload_3 = gen_msgv2_clan(packet , f"""[00FFFF][b][c]Player UID -->>""")
+        client.send(bytes.fromhex(pyload_3))
+        pyload_3 = gen_msgv2(packet , f"""[00FFFF][b][c]Player UID -->>""")
+        client.send(bytes.fromhex(pyload_3))
+        #uid
+        pyload_3 = gen_msgv2_clan(packet , f"""[00ff00][b][c]{user_id}""")
+        client.send(bytes.fromhex(pyload_3))
+        pyload_3 = gen_msgv2(packet , f"""[00ff00][b][c]{user_id}""")
+        client.send(bytes.fromhex(pyload_3))
+        client.send(bytes.fromhex(pyload_3))
+    
     #name
         pyload_3 = gen_msgv2_clan(packet , f"""[00FFFF][b][c]Player Name -->>""")
         client.send(bytes.fromhex(pyload_3))
@@ -177,17 +205,7 @@ def getinfobyid(packet , user_id , client):
         
         
         
-            #stat
-        pyload_3 = gen_msgv2_clan(packet , f"""[00FFFF][b][c]Player Status -->>""")
-        client.send(bytes.fromhex(pyload_3))
-        pyload_3 = gen_msgv2(packet , f"""[00FFFF][b][c]Player Status -->>""")
-        client.send(bytes.fromhex(pyload_3))
-        #stat
-        pyload_3 = gen_msgv2_clan(packet , f"""[00ff00][b][c]{user_id}""")
-        client.send(bytes.fromhex(pyload_3))
-        pyload_3 = gen_msgv2(packet , f"""[00ff00][b][c]{user_id}""")
-        client.send(bytes.fromhex(pyload_3))
-        client.send(bytes.fromhex(pyload_3))
+
         
         
         
