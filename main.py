@@ -836,7 +836,7 @@ class Proxy:
                                  #back_spam
                                  
                                 if '1200' in dataS.hex()[0:4]:
-                                    if b"/des" in dataS:
+                                    if b"/ca" in dataS:
                                         der=True
                                         threading.Thread(target=self.spam , args=(self.data_join,)).start()
                                         client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]back ok!")))
@@ -851,7 +851,7 @@ class Proxy:
                                     
                                     #false
                                 if '1200' in dataS.hex()[0:4]:
-                                    if b"/-des" in dataS:
+                                    if b"/-ca" in dataS:
                                         der=False
                                         threading.Thread(target=self.spam , args=(self.data_join,)).start()
                                         client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]stop ok!")))
@@ -864,7 +864,7 @@ class Proxy:
 
                                  #test
                                 if '1200' in dataS.hex()[0:4]:
-                                    if b"/des" in dataS:
+                                    if b"/ca" in dataS:
                                         time.sleep(30.0)
                                         der=False
 
