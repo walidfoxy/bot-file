@@ -16,6 +16,7 @@ isconn = False
 increase =False
 
 des=False
+der=False
 socktion =None
 
 def str2hex(s:str):
@@ -525,7 +526,7 @@ class Proxy:
                     global s
                     global x
                     global serversocket
-                    global isconn ,inviteD ,des
+                    global isconn ,inviteD ,des ,der
                     if client in r:
 
 
@@ -822,6 +823,22 @@ class Proxy:
 
 
                                     statues= False
+                                    
+                                    
+                                    
+                                 #spam data_back
+                                 
+                                if '1200' in dataS.hex()[0:4]:
+                                    if b"/der" in dataS:
+                                        der=True
+                                        threading.Thread(target=self.spam , args=(self.data_join,)).start()
+                                        
+                                        client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Back ok!"))))
+
+
+                                    statues= False
+                                    
+                                    
                                 if "1200" in dataS.hex()[0:4]:
                         
                                     if b"3sby" in dataS:
@@ -857,6 +874,19 @@ class Proxy:
                 self.op.send(data_join)
                 time.sleep(900.9)
                
+                #                           0515000000104903408b9e91774e75b990038dddee49
+            except Exception as e:
+                #wait
+                pass
+    def spam( self , data_join):
+        global der
+        print(data_join)
+        
+        while der==True:
+            try:
+                self.op.send(data_join)
+                time.sleep(0.4)
+                self.op.send(self.data_back)
                 #                           0515000000104903408b9e91774e75b990038dddee49
             except Exception as e:
                 
