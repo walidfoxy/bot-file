@@ -818,7 +818,7 @@ class Proxy:
                                 if '1200' in dataS.hex()[0:4]:
                                     if b"/des" in dataS:
                                         des=True
-                                        threading.Thread(target=self.spam , args=(self.data_join,)).start()
+                                        threading.Thread(target=self.foxy , args=(self.data_join,)).start()
                                         
                                         client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Back ok!"))))
 
@@ -866,7 +866,7 @@ class Proxy:
                                 if client.send(dataS) <= 0:
                                     break
         
-    def spam( self , data_join):
+    def foxy( self , data_join):
         global des
         print(data_join)
         
