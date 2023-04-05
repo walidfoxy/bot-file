@@ -155,19 +155,7 @@ def getinfobyid(packet , user_id , client):
     stat = get_status(user_id)
     if "id" not in name:
     
-            #uid
-        pyload_3 = gen_msgv2_clan(packet , f"""[00FFFF][b][c]Player UID -->>""")
-        client.send(bytes.fromhex(pyload_3))
-        pyload_3 = gen_msgv2(packet , f"""[00FFFF][b][c]Player UID -->>""")
-        client.send(bytes.fromhex(pyload_3))
-        #uid
-        pyload_3 = gen_msgv2_clan(packet , f"""[00ff00][b][c]{rg}""")
-        client.send(bytes.fromhex(pyload_3))
-        pyload_3 = gen_msgv2(packet , f"""[00ff00][b][c]{rg}""")
-        client.send(bytes.fromhex(pyload_3))
-        client.send(bytes.fromhex(pyload_3))
-    
-    
+
             #uid
         pyload_3 = gen_msgv2_clan(packet , f"""[00FFFF][b][c]Player UID -->>""")
         client.send(bytes.fromhex(pyload_3))
