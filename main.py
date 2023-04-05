@@ -27,12 +27,12 @@ def get_status(id):
     r= requests.get('https://ff.garena.com/api/antihack/check_banned?lang=en&uid={}'.format(id)) 
     a = "0"
     if  a in r.text :
-        #acount ban
-        return ("[ff00ff]Account Clear !" )
+        #acount clean
+        return ("[00ff00]Account Clear !" )
         
     else : 
-        #acount clear
-        return ('[00ff00]Account Ban ! ')
+        #acount ban
+        return ('[ff0000]Account Ban ! ')
         
         
 def get_info(user_id):
@@ -173,6 +173,24 @@ def getinfobyid(packet , user_id , client):
         pyload_3 = gen_msgv2(packet , f"""[00ff00][b][c]{stat}""")
         client.send(bytes.fromhex(pyload_3))
         client.send(bytes.fromhex(pyload_3))
+        
+        
+        
+        
+            #stat
+        pyload_3 = gen_msgv2_clan(packet , f"""[00FFFF][b][c]Player Status -->>""")
+        client.send(bytes.fromhex(pyload_3))
+        pyload_3 = gen_msgv2(packet , f"""[00FFFF][b][c]Player Status -->>""")
+        client.send(bytes.fromhex(pyload_3))
+        #stat
+        pyload_3 = gen_msgv2_clan(packet , f"""[00ff00][b][c]{user_id}""")
+        client.send(bytes.fromhex(pyload_3))
+        pyload_3 = gen_msgv2(packet , f"""[00ff00][b][c]{user_id}""")
+        client.send(bytes.fromhex(pyload_3))
+        client.send(bytes.fromhex(pyload_3))
+        
+        
+        
 
     else:
     #name
