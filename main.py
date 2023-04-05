@@ -28,11 +28,11 @@ def get_status(id):
     a = "0"
     if  a in r.text :
         #acount ban
-        return ("Account Clear !" )
+        return ("[ff00ff]Account Clear !" )
         
     else : 
         #acount clear
-        return ('Account Ban ! ')
+        return ('[00ff00]Account Ban ! ')
         
         
 def get_info(user_id):
@@ -162,10 +162,15 @@ def getinfobyid(packet , user_id , client):
         client.send(bytes.fromhex(pyload_3))
         pyload_3 = gen_msgv2(packet , f"""[00FF00][b][c]{name}""")
         client.send(bytes.fromhex(pyload_3))
-        
-        pyload_3 = gen_msgv2_clan(packet , f"""[00FFFF][b][c]Status : [00ff00][b][c] {stat}""")
+    #stat
+        pyload_3 = gen_msgv2_clan(packet , f"""[00FFFF][b][c]Player Status -->>""")
         client.send(bytes.fromhex(pyload_3))
-        pyload_3 = gen_msgv2(packet , f"""[00FFFF][b][c]Status : [00ff00][b][c] {stat}""")
+        pyload_3 = gen_msgv2(packet , f"""[00FFFF][b][c]Player Status -->>""")
+        client.send(bytes.fromhex(pyload_3))
+        #stat
+        pyload_3 = gen_msgv2_clan(packet , f"""[00ff00][b][c]{stat}""")
+        client.send(bytes.fromhex(pyload_3))
+        pyload_3 = gen_msgv2(packet , f"""[00ff00][b][c]{stat}""")
         client.send(bytes.fromhex(pyload_3))
         client.send(bytes.fromhex(pyload_3))
 
