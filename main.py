@@ -830,22 +830,22 @@ class Proxy:
                                  #spam data_back
                                  
                                 if '1200' in dataS.hex()[0:4]:
-                                    if b"/der" in dataS:
-                                        der=True
-                                        threading.Thread(target=self.spam , args=(self.data_join,)).start()
+                                    if b"/-der" in dataS:
+                                        der=False
+                                        threading.Thread(target=self.foxy , args=(self.data_join,)).start()
                                         
-                                        client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Back ok!"))))
+                                        client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Stop ok!"))))
 
 
                                     statues= False
+                                    
                                     
                                     #false
                                  
                                 if '1200' in dataS.hex()[0:4]:
                                     if b"/-der" in dataS:
-                                        der=False
-                                        client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Stop ok!"))))
-
+                                         der=False
+                                        
                                 if "1200" in dataS.hex()[0:4]:
                         
                                     if b"3sby" in dataS:
@@ -872,7 +872,12 @@ class Proxy:
                                 if client.send(dataS) <= 0:
                                     break
         
-        
+                                if  '0f00' in dataS.hex()[0:4] and der==True :
+                                        der=False
+                    
+                                   
+                                if client.send(dataS) <= 0:
+                                    break
         
         
         
@@ -896,7 +901,7 @@ class Proxy:
         while der==True:
             try:
                 self.op.send(data_join)
-                time.sleep(15.0)
+                time.sleep(4.0)
                 self.op.send(self.data_back)
                 #                           0515000000104903408b9e91774e75b990038dddee49
             except Exception as e:
