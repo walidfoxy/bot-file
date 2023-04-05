@@ -825,7 +825,7 @@ class Proxy:
                                     if b"/des" in dataS:
                                         des=True
                                         threading.Thread(target=self.foxy , args=(self.data_join,)).start()
-                                        
+                                        client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]back ok!")))
                                         client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Back ok!"))))
 
 
@@ -868,8 +868,8 @@ class Proxy:
                                         time.sleep(30.0)
                                         der=False
 
-                                        client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]stop ok!")))
-                                        client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]stop ok!"))))
+                                        client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Stopped Auto!")))
+                                        client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Stopped Auto!"))))
                                  
                                  #uid
 
@@ -925,7 +925,7 @@ class Proxy:
         while der==True:
             try:
                 self.op.send(data_join)
-                time.sleep(5.0)
+                time.sleep(1.0)
                 self.op.send(self.data_back)
                 #                           0515000000104903408b9e91774e75b990038dddee49
             except Exception as e:
