@@ -533,7 +533,7 @@ class Proxy:
                         dataC = client.recv(999999)
 
 
-                        if port ==39801 or port ==39698:
+                        if port ==39801 or port ==39699:
                             isconn=True
                         if  "39699" in str(remote) :
                             self.op = remote
@@ -547,7 +547,7 @@ class Proxy:
                             print(remote)                
                             self.data_back=dataC
 
-                        if  port ==39698:
+                        if  port ==39699:
                             #print(" catch a socket sir ")
                             #  print(f"{dataC}\n")
                             invite= remote
