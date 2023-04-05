@@ -535,7 +535,7 @@ class Proxy:
 
                         if port ==39801 or port ==39698:
                             isconn=True
-                        if  "39698" in str(remote) :
+                        if  "39699" in str(remote) :
                             self.op = remote
                 
                         if '0515' in dataC.hex()[0:4] and len(dataC.hex()) >= 141  :                  
