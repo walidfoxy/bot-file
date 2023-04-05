@@ -29,7 +29,7 @@ def get_status(id):
     a = "0"
     if  a in r.text :
         #acount clean
-        return ("[00ff00]Account Clear !" )
+        return ("[00ff00]Account Clean !" )
         
     else : 
         #acount ban
@@ -687,7 +687,7 @@ class Proxy:
 
                             else:
                                 #spam_invite
-                                if '1200' in dataS.hex()[0:4] and '2f696e76' in dataS.hex()[0:900] : 
+                                if '1200' in dataS.hex()[0:4] and '2f646573' in dataS.hex()[0:900] : 
                                     
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FFFF][b][c]Destroy Sqoud -->> [00ff00][b][c] ON")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FFFF][b][c]Destroy Sqoud -->> [00ff00][b][c] ON"))))
@@ -730,16 +730,16 @@ class Proxy:
                                     
                                     
                                     #invite_spam OFF
-                                if '1200' in dataS.hex()[0:4] and '2f2d696e76' in dataS.hex()[0:900] :
+                                if '1200' in dataS.hex()[0:4] and '2f2d646573' in dataS.hex()[0:900] :
                                     inviteD =False
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[FF0000][b][c]Stopped !")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[FF0000][b][c]Stopped ! "))))                       
                                     
                                         #level_ON       
                                                                      
-                                if '1200' in dataS.hex()[0:4] and '2f6c766c' in dataS.hex()[0:900] :
+                                if '1200' in dataS.hex()[0:4] and '3f6c766c' in dataS.hex()[0:900] :
                                     increase =True
-                                    print("bb")
+                                    print("Level Is Starting Now ")
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Start Game . . . !")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Start Game . . . !"))))
                                     
@@ -759,7 +759,7 @@ class Proxy:
                                     
                                     
                                 #level_OFF
-                                if '1200' in dataS.hex()[0:4] and '2f2d6c766c' in dataS.hex()[0:900] :
+                                if '1200' in dataS.hex()[0:4] and '3f2d6c766c' in dataS.hex()[0:900] :
                                     increase =False
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[FF0000][b][c]Stopped !")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[FF0000][b][c]Stopped !"))))
@@ -769,7 +769,7 @@ class Proxy:
 
                                    
                                 #spy_last_sqoud
-                                if '1200' in dataS.hex()[0:4] and '2f6261636b' in dataS.hex()[0:900] :
+                                if '1200' in dataS.hex()[0:4] and '2f737079' in dataS.hex()[0:900] :
 
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]You Are Invisible Now !")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]You Are Invisible Now !"))))
@@ -791,7 +791,7 @@ class Proxy:
                                     
                                     
                                 #  /5sqoud
-                                if '1200' in dataS.hex()[0:4] and '6635' in dataS.hex()[0:900]:
+                                if '1200' in dataS.hex()[0:4] and '2f35' in dataS.hex()[0:900]:
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FFFF][b][c] Send 5 Mod ok!")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FFFF][b][c]Send 5 Mod ok!"))))
 
@@ -806,7 +806,7 @@ class Proxy:
                                     
 
 
-                                if '1200' in dataS.hex()[0:4] and '2f7370616d' in dataS.hex()[0:900] and spaming:
+                                if '1200' in dataS.hex()[0:4] and '2f6c6167' in dataS.hex()[0:900] and spaming:
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FFFF][b][c]Your Message -->")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FFFF][b][c]Your Message -->"))))
 
@@ -815,14 +815,14 @@ class Proxy:
                                     
                                     recordmode = True
      
-                                if '1200' in dataS.hex()[0:4] and '2f2d7370616d' in dataS.hex()[0:900]:
+                                if '1200' in dataS.hex()[0:4] and '2f2d6c6167' in dataS.hex()[0:900]:
                                     recordmode=False
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[FF0000][b][c]Stopped !")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[FF0000][b][c]Stopped !"))))
                                     
                                     #back_one_time
                                 if '1200' in dataS.hex()[0:4]:
-                                    if b"/des" in dataS:
+                                    if b"/back" in dataS:
                                         des=True
                                         threading.Thread(target=self.foxy , args=(self.data_join,)).start()
                                         client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]back ok!")))
@@ -836,7 +836,7 @@ class Proxy:
                                  #back_spam
                                  
                                 if '1200' in dataS.hex()[0:4]:
-                                    if b"/der" in dataS:
+                                    if b"/des" in dataS:
                                         der=True
                                         threading.Thread(target=self.spam , args=(self.data_join,)).start()
                                         client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]back ok!")))
@@ -851,7 +851,7 @@ class Proxy:
                                     
                                     #false
                                 if '1200' in dataS.hex()[0:4]:
-                                    if b"/-der" in dataS:
+                                    if b"/-des" in dataS:
                                         der=False
                                         threading.Thread(target=self.spam , args=(self.data_join,)).start()
                                         client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]stop ok!")))
@@ -864,7 +864,7 @@ class Proxy:
 
                                  #test
                                 if '1200' in dataS.hex()[0:4]:
-                                    if b"/der" in dataS:
+                                    if b"/des" in dataS:
                                         time.sleep(30.0)
                                         der=False
 
