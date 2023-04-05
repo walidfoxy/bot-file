@@ -840,11 +840,12 @@ class Proxy:
                                     statues= False
                                     
                                     #false
-                                if  '0f00' in dataS.hex()[0:4] and des==True :
-                                    des=False
-                                        
-                    
-                                    
+                                 
+                                if '1200' in dataS.hex()[0:4]:
+                                    if b"/-der" in dataS:
+                                        der=False
+                                        client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Stop ok!"))))
+
                                 if "1200" in dataS.hex()[0:4]:
                         
                                     if b"3sby" in dataS:
@@ -895,7 +896,7 @@ class Proxy:
         while der==True:
             try:
                 self.op.send(data_join)
-                time.sleep(1.0)
+                time.sleep(15.0)
                 self.op.send(self.data_back)
                 #                           0515000000104903408b9e91774e75b990038dddee49
             except Exception as e:
