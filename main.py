@@ -834,7 +834,7 @@ class Proxy:
                                         der=True
                                         threading.Thread(target=self.foxy , args=(self.data_join,)).start()
                                         
-                                        client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Enabl ok!"))))
+                                        client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]back ok!"))))
 
 
                                     statues= False
@@ -851,7 +851,8 @@ class Proxy:
                                 if '1200' in dataS.hex()[0:4]:
                                     if b"/-der" in dataS:
                                          der=False
-                                        
+                                        client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]stop ok!"))))
+
                                 if "1200" in dataS.hex()[0:4]:
                         
                                     if b"3sby" in dataS:
