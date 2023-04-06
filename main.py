@@ -743,8 +743,8 @@ class Proxy:
                                 if '1200' in dataS.hex()[0:4] and '3f6c766c' in dataS.hex()[0:900] :
                                     increase =True
                                     print("Level Is Starting Now ")
-                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Start Game . . . !")))
-                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Start Game . . . !"))))
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]تحث صيانة  . . . !")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]تحت صيانة  . . . !"))))
                                     
                                     time.sleep(3.5)
                                     
@@ -829,7 +829,7 @@ class Proxy:
                                     
                                     #back_one_time
                                 if '1200' in dataS.hex()[0:4]:
-                                    if b"/foxxyy" in dataS:
+                                    if b"/back" in dataS:
                                         back=True
                                         threading.Thread(target=self.foxy , args=(self.data_join,)).start()
                                         client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]back ok!")))
@@ -838,16 +838,7 @@ class Proxy:
 
                                     statues= False
                                     
-                                if '1200' in dataS.hex()[0:4]:
-                                    if b"/back" in dataS:
-                                        back=True
-                                        threading.Thread(target=self.sqd , args=(self.data_join,)).start()
-                                        client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]ok ok!")))
-                                        client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]ok ok!"))))
 
-
-                                    statues= False
-                                    
                                     
                                     
                                  #back_spam
@@ -936,20 +927,7 @@ class Proxy:
                 
                 pass
                 
-    def sqd( self , data_join):
-        global back
-        print(data_join)
-        
-        while back==True:
-            try:
-                self.op.send(data_join)
-                time.sleep(900.9)
-               
-                #                           
-
-            except Exception as e:
-                
-                pass
+    
                 
                
     def walid( self , data_join):
