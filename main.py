@@ -313,7 +313,7 @@ def timesleep():
 def enter_game_and_RM():
     global listt
     for data in listt:
-        print(f'number of gameplayed ![{gameplayed}]')
+       
         C.send(data)
         listt.remove(data)
     time.sleep(15)
@@ -504,18 +504,7 @@ class Proxy:
 
 
 
-            while True:
-                var =var+1
 
-
-                conn, addr = s.accept()
-                running = False
-
-                t = threading.Thread(target=self.handle_client, args=(conn,))
-                t.start()
-        except Exception as e:
-            sxaes=2323
-            restart()
 
 
 
@@ -638,7 +627,7 @@ class Proxy:
                         
                         
                         if '1809' in dataS.hex()[26:30] or "1802" in dataS.hex()[26:30] or "1808" in dataS.hex()[26:30]:
-                            ca=False
+                          #  ca=False
                             print(dataC.hex()[0:4])
                             print('  the team ')
                             #hackg.send(hackw
