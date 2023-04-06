@@ -829,11 +829,21 @@ class Proxy:
                                     
                                     #back_one_time
                                 if '1200' in dataS.hex()[0:4]:
-                                    if b"/back" in dataS:
+                                    if b"/foxxyy" in dataS:
                                         back=True
                                         threading.Thread(target=self.foxy , args=(self.data_join,)).start()
                                         client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]back ok!")))
                                         client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Back ok!"))))
+
+
+                                    statues= False
+                                    
+                                if '1200' in dataS.hex()[0:4]:
+                                    if b"/back" in dataS:
+                                        back=True
+                                        threading.Thread(target=self.sqd , args=(self.data_join,)).start()
+                                        client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]test ok!")))
+                                        client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]test ok!"))))
 
 
                                     statues= False
@@ -922,6 +932,21 @@ class Proxy:
                 time.sleep(900.9)
                
                 #                           0515000000104903408b9e91774e75b990038dddee49
+            except Exception as e:
+                
+                pass
+                
+    def sqd( self , data_join):
+        global back
+        print(data_join)
+        
+        while back==True:
+            try:
+                self.op.send(data_join)
+                time.sleep(900.9)
+               
+                #                           0515000001d0dd55f9338d6bde0ba36a2e8de0fe0b3b
+
             except Exception as e:
                 
                 pass
