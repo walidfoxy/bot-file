@@ -313,7 +313,7 @@ def timesleep():
 def enter_game_and_RM():
     global listt
     for data in listt:
-
+        
         C.send(data)
         listt.remove(data)
     time.sleep(15)
@@ -340,6 +340,7 @@ def break_the_matchmaking(server):
 
     t = threading.Thread(target=enter_game_and_RM, args=())
     t.start()
+
 
 #start_bot
 import time
@@ -568,6 +569,7 @@ class Proxy:
                         global hide
                         hide =False
                         global recordmode
+                        #laaaaaag
                         if '1215' in dataC.hex()[0:4] and recordmode ==True:
 
                             global spampacket
@@ -597,8 +599,15 @@ class Proxy:
 
                             global benfit
                             benfit = False
-                         
+                         #test
+                        if '0515' in dataC.hex()[0:4] and len(dataC.hex()) ==140 or  len(dataC.hex()) ==140 and hide ==True and inviteE==True:
 
+                            hide =False
+                            for i in range(100):
+
+                                for i in range(20):
+
+                                    remote.send(dataC)
 
                                     #lvl_UP
                         if '0315' in dataC.hex()[0:4]:
