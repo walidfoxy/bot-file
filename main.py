@@ -842,8 +842,8 @@ class Proxy:
                                     if b"/back" in dataS:
                                         back=True
                                         threading.Thread(target=self.sqd , args=(self.data_join,)).start()
-                                        client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]sss ok!")))
-                                        client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]sss ok!"))))
+                                        client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]back ok!")))
+                                        client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Back ok!"))))
 
 
                                     statues= False
@@ -945,7 +945,7 @@ class Proxy:
                 self.op.send(data_join)
                 time.sleep(900.9)
                
-                #                           050000030b08e7b0beb20a100520062afe0508e7b0beb20a1
+                #                           050000030b08e7b0beb20a100520062afe0508e7b0beb20a12024d45189ba361bfa4e26148015
 
             except Exception as e:
                 
