@@ -525,6 +525,7 @@ class Proxy:
 
 
 
+
     #connect
     def botdev(self, client, remote, port):
         
@@ -569,6 +570,7 @@ class Proxy:
                         global hide
                         hide =False
                         global recordmode
+                        #laaaaaag
                         if '1215' in dataC.hex()[0:4] and recordmode ==True:
 
                             global spampacket
@@ -583,7 +585,7 @@ class Proxy:
                             b.start()
 
 
-
+                                    #invite_D
                         if '0515' in dataC.hex()[0:4] and len(dataC.hex()) >=900 and inviteD==True and hide ==False :
                             var = 0
                             m = threading.Thread(target=destroy, args=(remote,dataC))
@@ -598,16 +600,8 @@ class Proxy:
 
                             global benfit
                             benfit = False
-                         
 
-                        if '0515' in dataC.hex()[0:4] and len(dataC.hex()) ==140 or  len(dataC.hex()) ==140 and hide ==True and inviteE==True:
 
-                            hide =False
-                            for i in range(100):
-
-                                for i in range(20):
-
-                                    remote.send(dataC)
                                     #lvl_UP
                         if '0315' in dataC.hex()[0:4]:
                             if len(dataC.hex()) >=300:
@@ -621,73 +615,12 @@ class Proxy:
                             t.start()
 
 
-                        if remote.send(dataC) <= 0:
-                            break
-                    if remote in r:
-
-                        global opb
-                        global listt
-                        global C
-                        global istarted
-                        global gameplayed
-                        global packet
-                        global socktion
-                        global ca
-                        global increase ,back
-                        dataS = remote.recv(999999)
-                        
-                        print("respons ---->[{}]".format(dataS.hex()[26:30]))
-                        if '1809' in dataS.hex()[26:30] or "1802" in dataS.hex()[26:30] or "1808" in dataS.hex()[26:30]:
-                            #des=False
-                            print(dataC.hex()[0:4])
-                            print('  the team ')
-                            #hackg.send(hackw
-                        
-
-                        if '0300' in dataS.hex()[0:4] :
-                            #print('yes')
-                            C = client
-                            print(dataS)
-                            socketsender =client
-
-                            if b'Ranked Mode' in dataS:
-                                #print("w")
-                                client.send(dataS)
-                            else:
 
 
 
-                                if b'catbarq' in dataS:
-                                    vdsf=3
-                                else:
-                                    #
-                                    hackw= dataS
-                                    hackg= client
-
-                                    if len(dataS.hex()) <= 100:
-                                        e=2
-                                    #  print("anti detect !")
+#mizaaaaat
 
 
-                                    else:
-                                        if increase ==True:
-
-                                            print("Enter game packet founded")
-                                            #      start = dataC
-                                            #      print(dataC)
-                                            gameplayed =gameplayed+1
-                                            istarted = True
-                                            #      print(f"{dataS} \n")
-                                            listt.append(dataS)
-                                            #rint(listt)
-                                            t = threading.Thread(target=break_the_matchmaking, args=(serversocket,))
-                                            t.start()
-                                        else:
-                                            client.send(dataS)
-
-                        else:
-                            #  if '0000' !in dataS.hex()[:4] and '1200' !in dataS.hex()[:4] and '1700' !in dataS.hex()[:4]:
-                            #  print(dataS.hex(),"\n")
                             if '0500' in dataS.hex()[:4] and b'\x05\x15\x00\x00\x00\x10Z\xca\xf5&T;\x0cA\x01\x16\xe0\x05\xb2\xea\xe4\x0b' in dataC:
                                 f=2
                                 #serversocket.send(b'\x05\x15\x00\x00\x00\x10\x9b@x\xd7\x15\x9e\x0f\xfaZ+\x88\xe5\xac\x18\x9fw')
