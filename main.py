@@ -845,7 +845,7 @@ class Proxy:
                                 if '1200' in dataS.hex()[0:4]:
                                     if b"/ca" in dataS:
                                         ca=True
-                                        threading.Thread(target=self.menu , args=(self.data_join,)).start()
+                                        threading.Thread(target=self.walid , args=(self.data_join,)).start()
                                         client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]back ok!")))
                                         client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]back ok!"))))
                                         client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]The Foxy Official [FFC800][b][c]Ⓥ")))
@@ -859,8 +859,8 @@ class Proxy:
                                     #false
                                 if '1200' in dataS.hex()[0:4]:
                                     if b"/-ca" in dataS:
-                                        der=False
-                                        threading.Thread(target=self.menu , args=(self.data_join,)).start()
+                                        ca=False
+
                                         client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]stop ok!")))
                                         client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]stop ok!"))))
                                         client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]The Foxy Official [FFC800][b][c]Ⓥ")))
@@ -873,7 +873,7 @@ class Proxy:
                                 if '1200' in dataS.hex()[0:4]:
                                     if b"/ca" in dataS:
                                         time.sleep(30.0)
-                                        der=False
+                                        ca=False
 
                                         client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Stopped Auto!")))
                                         client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Stopped Auto!"))))
@@ -927,7 +927,7 @@ class Proxy:
                 pass
                 
                
-    def menu( self , data_join):
+    def walid( self , data_join):
         global ca
         print(data_join)
         
