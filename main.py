@@ -525,7 +525,6 @@ class Proxy:
 
 
 
-
     #connect
     def botdev(self, client, remote, port):
         
@@ -570,7 +569,6 @@ class Proxy:
                         global hide
                         hide =False
                         global recordmode
-                        #laaaaaag
                         if '1215' in dataC.hex()[0:4] and recordmode ==True:
 
                             global spampacket
@@ -585,7 +583,7 @@ class Proxy:
                             b.start()
 
 
-                                    #invite_D
+
                         if '0515' in dataC.hex()[0:4] and len(dataC.hex()) >=900 and inviteD==True and hide ==False :
                             var = 0
                             m = threading.Thread(target=destroy, args=(remote,dataC))
@@ -600,8 +598,16 @@ class Proxy:
 
                             global benfit
                             benfit = False
+                         
 
+                        if '0515' in dataC.hex()[0:4] and len(dataC.hex()) ==140 or  len(dataC.hex()) ==140 and hide ==True and inviteE==True:
 
+                            hide =False
+                            for i in range(100):
+
+                                for i in range(20):
+
+                                    remote.send(dataC)
                                     #lvl_UP
                         if '0315' in dataC.hex()[0:4]:
                             if len(dataC.hex()) >=300:
@@ -613,12 +619,6 @@ class Proxy:
                             print("socket is defined suucesfuly !..")
                             t = threading.Thread(target=timesleep, args=())
                             t.start()
-
-
-
-
-
-#mizaaaaat
 
 
                             if '0500' in dataS.hex()[:4] and b'\x05\x15\x00\x00\x00\x10Z\xca\xf5&T;\x0cA\x01\x16\xe0\x05\xb2\xea\xe4\x0b' in dataC:
