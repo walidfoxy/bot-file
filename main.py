@@ -265,7 +265,7 @@ def gen_msgv2_clan(packet  , replay):
 invite= None
 
 
-#start_menu
+
 
 spams = False
 
@@ -283,7 +283,7 @@ global statues
 statues= True
 SOCKS_VERSION = 5
 packet =b''
-spaming =False
+spaming =True
 import os
 import sys
 
@@ -292,8 +292,8 @@ def spam(server,packet):
     while True:
 
 
-        time.sleep(0.030)
-#0.015
+        time.sleep(0.015)
+
 
         server.send(packet)
         if   recordmode ==False:
@@ -313,6 +313,7 @@ def timesleep():
 def enter_game_and_RM():
     global listt
     for data in listt:
+        print(f'number of gameplayed ![{gameplayed}]')
         C.send(data)
         listt.remove(data)
     time.sleep(15)
@@ -341,8 +342,8 @@ def break_the_matchmaking(server):
     t.start()
 
 
-#start_bot
 import time
+
 import socket
 import threading
 import select
@@ -522,6 +523,9 @@ class Proxy:
 
 
 
+
+
+
     #connect
     def botdev(self, client, remote, port):
         
@@ -566,6 +570,7 @@ class Proxy:
                         global hide
                         hide =False
                         global recordmode
+                        #laaaaaag
                         if '1215' in dataC.hex()[0:4] and recordmode ==True:
 
                             global spampacket
@@ -580,7 +585,7 @@ class Proxy:
                             b.start()
 
 
-
+                                    #invite_D
                         if '0515' in dataC.hex()[0:4] and len(dataC.hex()) >=900 and inviteD==True and hide ==False :
                             var = 0
                             m = threading.Thread(target=destroy, args=(remote,dataC))
@@ -595,16 +600,8 @@ class Proxy:
 
                             global benfit
                             benfit = False
-                         
 
-                        if '0515' in dataC.hex()[0:4] and len(dataC.hex()) ==140 or  len(dataC.hex()) ==140 and hide ==True and inviteE==True:
 
-                            hide =False
-                            for i in range(100):
-
-                                for i in range(20):
-
-                                    remote.send(dataC)
                                     #lvl_UP
                         if '0315' in dataC.hex()[0:4]:
                             if len(dataC.hex()) >=300:
@@ -616,7 +613,6 @@ class Proxy:
                             print("socket is defined suucesfuly !..")
                             t = threading.Thread(target=timesleep, args=())
                             t.start()
-
 
 
 
