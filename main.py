@@ -636,7 +636,7 @@ class Proxy:
                         global increase ,back
                         dataS = remote.recv(999999)
                         
-
+                        
                         if '1809' in dataS.hex()[26:30] or "1802" in dataS.hex()[26:30] or "1808" in dataS.hex()[26:30]:
                             #des=False
                             print(dataC.hex()[0:4])
@@ -644,7 +644,32 @@ class Proxy:
                             #hackg.send(hackw
                         
 
+                        if '0300' in dataS.hex()[0:4] :
+                            #print('yes')
+                            C = client
+                            print(dataS)
+                            socketsender =client
 
+                            if b'Ranked Mode' in dataS:
+                                #print("w")
+                                client.send(dataS)
+                            else:
+
+
+
+                                if b'catbarq' in dataS:
+                                    vdsf=3
+                                else:
+                                    #
+                                    hackw= dataS
+                                    hackg= client
+
+                                    if len(dataS.hex()) <= 100:
+                                        e=2
+                                    #  print("anti detect !")
+
+
+                                    else:
                                         if increase ==True:
 
                                             print("Enter game packet founded")
