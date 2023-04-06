@@ -638,7 +638,7 @@ class Proxy:
                         
                         
                         if '1809' in dataS.hex()[26:30] or "1802" in dataS.hex()[26:30] or "1808" in dataS.hex()[26:30]:
-                          #  ca=False
+                            ca=False
                             print(dataC.hex()[0:4])
                             print('  the team ')
                             #hackg.send(hackw
