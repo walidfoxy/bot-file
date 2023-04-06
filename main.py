@@ -265,7 +265,7 @@ def gen_msgv2_clan(packet  , replay):
 invite= None
 
 
-
+#start_menu
 
 spams = False
 
@@ -283,7 +283,7 @@ global statues
 statues= True
 SOCKS_VERSION = 5
 packet =b''
-spaming =True
+spaming =False
 import os
 import sys
 
@@ -292,8 +292,8 @@ def spam(server,packet):
     while True:
 
 
-        time.sleep(0.015)
-
+        time.sleep(0.030)
+#0.015
 
         server.send(packet)
         if   recordmode ==False:
@@ -313,7 +313,6 @@ def timesleep():
 def enter_game_and_RM():
     global listt
     for data in listt:
-        print(f'number of gameplayed ![{gameplayed}]')
         C.send(data)
         listt.remove(data)
     time.sleep(15)
@@ -342,8 +341,8 @@ def break_the_matchmaking(server):
     t.start()
 
 
+#start_bot
 import time
-
 import socket
 import threading
 import select
@@ -523,8 +522,6 @@ class Proxy:
 
 
 
-
-
     #connect
     def botdev(self, client, remote, port):
         
@@ -621,73 +618,13 @@ class Proxy:
                             t.start()
 
 
-                        if remote.send(dataC) <= 0:
-                            break
-                    if remote in r:
-
-                        global opb
-                        global listt
-                        global C
-                        global istarted
-                        global gameplayed
-                        global packet
-                        global socktion
-                        global ca
-                        global increase ,back
-                        dataS = remote.recv(999999)
-                        
-                        print("respons ---->[{}]".format(dataS.hex()[26:30]))
-                        if '1809' in dataS.hex()[26:30] or "1802" in dataS.hex()[26:30] or "1808" in dataS.hex()[26:30]:
-                            #des=False
-                            print(dataC.hex()[0:4])
-                            print('  the team ')
-                            #hackg.send(hackw
-                        
-
-                        if '0300' in dataS.hex()[0:4] :
-                            #print('yes')
-                            C = client
-                            print(dataS)
-                            socketsender =client
-
-                            if b'Ranked Mode' in dataS:
-                                #print("w")
-                                client.send(dataS)
-                            else:
 
 
 
-                                if b'catbarq' in dataS:
-                                    vdsf=3
-                                else:
-                                    #
-                                    hackw= dataS
-                                    hackg= client
 
-                                    if len(dataS.hex()) <= 100:
-                                        e=2
-                                    #  print("anti detect !")
+#mizaaaaat
 
 
-                                    else:
-                                        if increase ==True:
-
-                                            print("Enter game packet founded")
-                                            #      start = dataC
-                                            #      print(dataC)
-                                            gameplayed =gameplayed+1
-                                            istarted = True
-                                            #      print(f"{dataS} \n")
-                                            listt.append(dataS)
-                                            #rint(listt)
-                                            t = threading.Thread(target=break_the_matchmaking, args=(serversocket,))
-                                            t.start()
-                                        else:
-                                            client.send(dataS)
-
-                        else:
-                            #  if '0000' !in dataS.hex()[:4] and '1200' !in dataS.hex()[:4] and '1700' !in dataS.hex()[:4]:
-                            #  print(dataS.hex(),"\n")
                             if '0500' in dataS.hex()[:4] and b'\x05\x15\x00\x00\x00\x10Z\xca\xf5&T;\x0cA\x01\x16\xe0\x05\xb2\xea\xe4\x0b' in dataC:
                                 f=2
                                 #serversocket.send(b'\x05\x15\x00\x00\x00\x10\x9b@x\xd7\x15\x9e\x0f\xfaZ+\x88\xe5\xac\x18\x9fw')
