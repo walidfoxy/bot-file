@@ -1,1 +1,1 @@
-tcp://8.tcp.ngrok.io:17341
+8.tcp.ngrok.io:17341
