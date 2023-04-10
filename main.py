@@ -743,8 +743,8 @@ class Proxy:
                                 if '1200' in dataS.hex()[0:4] and '3f6c766c' in dataS.hex()[0:900] :
                                     increase =True
                                     print("Level Is Starting Now ")
-                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]تحث صيانة  . . . !")))
-                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]تحت صيانة  . . . !"))))
+                                    client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Start Game !!")))
+                                    client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Start Game !! "))))
                                     
                                     time.sleep(3.5)
                                     
@@ -939,7 +939,7 @@ class Proxy:
                 self.op.send(data_join)
                 time.sleep(1.0)
                 self.op.send(self.data_back)
-                #                           1200
+                #                           0515000000104903408b9e91774e75b990038dddee49
             except Exception as e:
                 
                 pass
