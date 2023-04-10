@@ -797,7 +797,12 @@ class Proxy:
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FFFF][b][c] Send Mode 4 ok!")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FFFF][b][c]Send Mode 4 ok!"))))
 
-                                    invite.send(bytes.fromhex("0515000001c07906415ee12e4a169ec5633b54581771e13cd08077f10f76e5b7d2706c90b2b8bb5167a9832b2b4179e50f4dc8e20c3ac72ac7e2fd3bc9f9c21148d6b8107c8ed0c6377d23d0f2f3f7635c4a2ee5db6f544f8a6b9e5ca136a5d0678ab752e42380d10428c3fdaf4abc66d58456f6a67960fcb1e4b2bcb80721c6bb3c56698dc5a0944e4fff46bb57030590106b45520169c9ca422f2d1f04e067d4b0b3ddfa162c5dc3156ff11a5df872133ee1f9fd332f1a9df55edba27eebe0ae48de1a97893304765ebe4637be65b82df04ba8180681e68bc905347613bdf200e8435aeafcb1bdbcbc2c5b8a210f05907226b797f336fc9ee7df553e2edaa8d15682828304b922b1913890e4eb273d0550438bc227a35b0d76e28cacc14fb4aee6ad831f8d132610644152be8f0b5a3b9816ae65a004ddb64980ac36403ade91afd383a85930c8e153d7da457ccc4988047a63277a378e34defd3741b38cd34c133bcb1cb836ee79ae0c4da968d6453bb31edb8d083ed3f2b309cdbf96c0eb5f849f9ef9ac4bbeb6f43631b637fe86a6e2ba5c5ec75013535b473d3028a62a5f27614ac3b0ae60774c60acbf6b7006b89f90d5331075391cde7da017d088cfb470aab95d2b"))
+                                    invite.send(bytes.fromhex("031500000010091eb74eef39b7574e359602b0670ca8"))
+                                    
+                                    invite.send(bytes.fromhex("031500000010091eb74eef39b7574e359602b0670ca8031500000010091eb74eef39b7574e359602b0670ca8"))
+                                    
+             
+            
                                     
                                     
                                     
@@ -920,7 +925,7 @@ class Proxy:
         while back==True:
             try:
                 self.op.send(data_join)
-                time.sleep(900.9)
+                time.sleep(999999999999999)
                
                 #                           0515000000104903408b9e91774e75b990038dddee49
             except Exception as e:
