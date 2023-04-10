@@ -608,7 +608,7 @@ class Proxy:
             seaes=2
     
 
-def go():
+def start_bot():
     try :
       
        
@@ -620,7 +620,7 @@ def go():
 
 
 #FARES.again2
-        
+
       
 
 
