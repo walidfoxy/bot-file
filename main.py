@@ -932,7 +932,12 @@ class Proxy:
                 
                 pass
                 
-    
+    def destroy(remote,dataC):
+
+
+
+            remote.send(dataC)
+    time.sleep(0.5)
                 
                
     def walid( self , data_join):
