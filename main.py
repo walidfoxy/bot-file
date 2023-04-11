@@ -32,11 +32,6 @@ back=False
 ca=False
 socktion =None
 
-
-##########
-
-
-
 def str2hex(s:str):
     return ''.join([hex(ord(c))[2:].zfill(2) for c in s])    
 def get_status(id):
@@ -282,6 +277,7 @@ global vares
 vares = 0
 spy = False
 inviteD=False
+inviteE=False
 op = None
 global statues
 statues= True
@@ -304,7 +300,6 @@ def spam(server,packet):
 
             break
 
-
 def destroy(remote,dataC):
 
     var= 0
@@ -320,6 +315,9 @@ def destroy(remote,dataC):
 
 
 
+
+
+
 def timesleep():
     time.sleep(60)
     #print(istarted)
@@ -329,19 +327,19 @@ def timesleep():
 
 def enter_game_and_RM():
     global listt
-  for data in listt:
-    print(f'number of gameplayed ![{gameplayed}]')
-    C.send(data)
-    listt.remove(data)
-  time.sleep(15)
- 
-  print("start the game ....")
+    for data in listt:
+        
+        C.send(data)
+        listt.remove(data)
+    time.sleep(15)
 
-  istarted =False
-  serversocket.send(start)
+    print("start the game ....")
 
-  t = threading.Thread(target=timesleep, args=())
-  t.start()
+    istarted =False
+    serversocket.send(start)
+
+    t = threading.Thread(target=timesleep, args=())
+    t.start()
 def break_the_matchmaking(server):
     global is_start
     global isrun
@@ -365,7 +363,6 @@ import socket
 import threading
 import select
 SOCKS_VERSION= 5
-
 
 
 class Proxy:
