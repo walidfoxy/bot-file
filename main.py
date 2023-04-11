@@ -299,6 +299,19 @@ def spam(server,packet):
         if   recordmode ==False:
 
             break
+            
+def destroy(remote,dataC):
+    
+    var= 0
+    for i in range(50):
+        
+        var= var+1
+       
+        time.sleep(0.010)
+        for i in range(10):
+            
+            remote.send(dataC)
+    time.sleep(0.5)
 
 
 
@@ -813,11 +826,8 @@ class Proxy:
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FFFF][b][c] Send Mode 2 ok!")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FFFF][b][c]Send Mode 2 ok!"))))
 
-                                    invite.send(bytes.fromhex("\x12\x15\x00\x00\x00@\xc4\xdaZ\x93\xfa\xc60\x07\x1a\x08\xb5\x11\xde\x14x\x7f?}B\xf9\xf0\xc4\xe9\xa1\x9f\xd0\x8e#v\xccg\xa2\xb1@\xc2\xc1\x81\x0b\xeeeEf\xd6T\xf45\xd4\xd1\xd8\xdb\x0e\xd8\xe1\x0f\xf5\xff\x86\xe4\x8b'\x9d\x17\x98\x89"))
-                                    invite.send(bytes.fromhex("\x12\x15\x00\x00\x00P\xe7a\xce\x8f\x9d,;\xab\xe9hM\xeb\x83\xe01\xdc=\x18y\x85.\xc7Y&\x9c\x03^\x13\xcf\xd3\xa8\xb0\x0c>\x0c\xe6\xc40\x10\xc5\xfe\xae/}G\xe2\xc7\xe8z\xb2,\xb6\xd4\t\x9c":\xdd\xab\xc4{I\xf0\x1d)K\x88\xa2\xf9\xb7\tXx1\x99pE\\]?"))
-                                    
+                                    invite.send(bytes.fromhex("0515000001c041b8f4aed5883a2ccdc22f2549c3751974a8f2bcacace88c156ee69911475b14104d4e09027a0d296458125320915cf6512c040d648d8f4c59c57d1e6ba5e098545c39bb37ea0be6e5b3a288d974acb2afbc1836f83061d4e5e291c683bb44911e08860e700c7be5d40578712805a8e99b3317d4d06cf42573ad9094f1091bf30f4238afd51a4989d5dc4efbe5d447b079fd3e8ea08e7942baea11f449068c89826a4928abfcdaf55aa99bdda35f8d61c2277156df051c123e3571e2fd2356b574195bd2b28f03480b3cdb1712bebec6029546faf87e816fdc688c67c1264f06b8513145f75132edb7d811300541fdccbdc3161f2dba96eff6640293e35e6c44ed3334ef785b0d3808073f393981bc572da04223a217cc68af8c9b5a0df472aa16e2c449973727236e990936fc86bdc9acec5efc5af6b31ee36a15e0e09aff0f8ef239e5e9affc7d589d1c3b08dd13f6b9b2f44a7163dbef02643945af4cb201b31530bb3fef1c7bb55a44cb7cd04fd9bb5a76f9625eccc733f7513cd5541632ffb5a8753fb6e0dea1b77b51c828835276fa8668a7a0bb0e584a021e2ea5610747b38b1c3eaf17d918b7f848487aee5ee41517dadfc587f5f21cd996d440f23e"))
 
-        
 
 
 
