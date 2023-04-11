@@ -292,7 +292,7 @@ def spam(server,packet):
     while True:
 
 
-        time.sleep(0.015)
+        time.sleep(0.001)
 
 
         server.send(packet)
@@ -307,11 +307,11 @@ def destroy(remote,dataC):
         
         var= var+1
        
-        time.sleep(0.001)
+        time.sleep(0.010)
         for i in range(10):
             
             remote.send(dataC)
-    time.sleep(0.1)
+    time.sleep(0.5)
 
 
 
