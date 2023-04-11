@@ -300,21 +300,6 @@ def spam(server,packet):
 
             break
 
-def destroy(remote,dataC):
-
-    var= 0
-    for i in range(50):
-
-        var= var+1
-
-        time.sleep(0.010)
-        for i in range(10):
-
-            remote.send(dataC)
-    time.sleep(0.5)
-
-
-
 
 
 
