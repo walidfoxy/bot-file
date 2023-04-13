@@ -279,6 +279,9 @@ spy = False
 inviteD=False
 inviteE=False
 op = None
+server_chang=False
+singafora= False
+mena=False
 global statues
 statues= True
 SOCKS_VERSION = 5
@@ -292,7 +295,7 @@ def spam(server,packet):
     while True:
 
 
-        time.sleep(0.001)
+        time.sleep(0.015)
 
 
         server.send(packet)
@@ -312,7 +315,6 @@ def destroy(remote,dataC):
             
             remote.send(dataC)
     time.sleep(0.5)
-
 
 
 
@@ -413,15 +415,50 @@ class Proxy:
         port = int.from_bytes(connection.recv(2), 'big', signed=False)
         port2 = port
         try:
+        #server change!!
+               
+            if cmd == 1:  # CONNECT
+                remote = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 
 
+                if server_chang==True:
+
+                    #serves ip
+                    if port==39699 : #39699
+                        print(f"the oficail address {address}")
+                        address="23.90.159.146"
+
+                    if port==39801:
+                        print(f"the oficail address {address}")
+                        address="23.90.159.202"
+
+                    
+                
+                if singafora==True:
+    
+                    
+                    if port==39699 : #39699
+                        print(f"the oficail address {address}")
+                        address="23.90.158.18"
+
+                    if port==39801:
+                        print(f"the oficail address {address}")
+                        address="23.90.158.118"
+
+                    
+                    
+                    
+            
+                        
+
+                remote.connect((address, port))
 
 
-            remote = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            remote.connect((address, port))
-            #print(" connect to {} \n \n \n ".format(address))
-            bind_address = remote.getsockname()
+                bind_address = remote.getsockname()
+                print("* Connected to {} {}".format(address, port))
+            else:
+                connection.close()
 
             addr = int.from_bytes(socket.inet_aton(
                 bind_address[0]), 'big', signed=False)
@@ -437,11 +474,20 @@ class Proxy:
 
             ])
         except Exception as e:
-
+            print(e)
             reply = self.generate_failed_reply(address_type, 5)
+
+           
 
 
         connection.sendall(reply)
+        # establish data exchange
+        if reply[1] == 0 and cmd == 1:
+            
+            self.exchange_loop(connection, remote)
+
+        connection.close()
+
 
 
         self.botdev(connection, remote,port2)
@@ -555,6 +601,7 @@ class Proxy:
                     global ca
                     global serversocket
                     global isconn ,inviteD ,back
+                    global singafora , server_chang ,port_conect_39699 , port_conect_39801
                     if client in r:
 
 
@@ -627,7 +674,13 @@ class Proxy:
                             t = threading.Thread(target=timesleep, args=())
                             t.start()
 
+                        if remote.send(data) <= 0:
+                            if "39801" in str(remote):
+                               port_conect_39801=remote
+                            if "3969" in str(remote):
+                               port_conect_39699=remote
 
+                    
 
 
 
@@ -922,6 +975,34 @@ class Proxy:
 
                                         hide = False
 
+
+#server Change
+                                if '1200' in dataS.hex()[0:4]:
+                                    if b"/ER" in dataS:
+                                        server_chang=True
+                                        port_conect_39699.close()
+                                        port_conect_39801.close()
+
+                                        client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Welcome to Eroupe Server [FFC800][b][c]Ⓥ")))
+                                        client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Welcome to Eroupe Server [FFC800][b][c]Ⓥ"))))
+
+
+                                if '1200' in dataS.hex()[0:4]:
+                                    if b"/ME" in dataS:
+                                        singafora=True
+                                        port_conect_39699.close()
+                                        port_conect_39801.close()
+                    
+
+
+                                        client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Welcome to Mena Server [FFC800][b][c]Ⓥ")))
+                                        client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Welcome to Mena Server [FFC800][b][c]Ⓥ"))))
+
+
+
+
+
+
                                 if client.send(dataS) <= 0:
                                     break
         
@@ -937,7 +1018,7 @@ class Proxy:
         while back==True:
             try:
                 self.op.send(data_join)
-                time.sleep(999999999999999)
+                time.sleep(9999.0)
                
                 #                           0515000000104903408b9e91774e75b990038dddee49
             except Exception as e:
