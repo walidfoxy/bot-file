@@ -42,11 +42,11 @@ def get_status(id):
     a = "0"
     if  a in r.text :
         #acount clean
-        return ("[00ff00]Account Clean !" )
+        return ("Account Clean !" )
         
     else : 
         #acount ban
-        return ('[ff0000]Account Ban ! ')
+        return ('Account Ban ! ')
         
         
 def get_info(user_id):
