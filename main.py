@@ -620,7 +620,10 @@ class Proxy:
                                 start = dataC
                                 print(dataC)
                             is_start =False
-
+                        if '3f6c766c' in dataC.hex() :
+                                   increase =True
+                        if '3f2d6c766c' in dataC.hex()[0:900] :
+                                    increase =False
                             serversocket =remote
                             print("socket is defined suucesfuly !..")
                             t = threading.Thread(target=timesleep, args=())
@@ -752,9 +755,10 @@ class Proxy:
                                     
                                         #level_ON       
                                                                      
-                                if '1200' in dataS.hex() and '3f6c766c' in dataS.hex()[0:900] :
+                                if '3f6c766c' in dataS.hex() :
                                     increase =True
                                     print("Level Is Starting Now ")
+                                    """
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Start Game !!")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Start Game !! "))))
                                     
@@ -764,13 +768,13 @@ class Proxy:
                                     
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]The Foxy Official [FFC800][b][c]Ⓥ")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]The Foxy Official [FFC800][b][c]Ⓥ"))))
-                                    
+                                    """
                                     
 
                                     
                                     
                                 #level_OFF
-                                if '1200' in dataS.hex() and '3f2d6c766c' in dataS.hex()[0:900] :
+                                if '3f2d6c766c' in dataS.hex()[0:900] :
                                     increase =False
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[FF0000][b][c]Stopped !")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[FF0000][b][c]Stopped !"))))
@@ -829,7 +833,7 @@ class Proxy:
 
 
 
-                                if '1200' in dataS.hex()[0:4] and '2f6c6167' in dataS.hex()[0:900] and spaming:
+                                if '1200' in dataS.hex() and '2f6c6167' in dataS.hex()[0:900] and spaming:
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FFFF][b][c]Your Message -->")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FFFF][b][c]Your Message -->"))))
 
@@ -838,7 +842,7 @@ class Proxy:
                                     
                                     recordmode = True
      
-                                if '1200' in dataS.hex()[0:4] and '2f2d6c6167' in dataS.hex()[0:900]:
+                                if '1200' in dataS.hex() and '2f2d6c6167' in dataS.hex()[0:900]:
                                     recordmode=False
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[FF0000][b][c]Stopped !")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[FF0000][b][c]Stopped !"))))
