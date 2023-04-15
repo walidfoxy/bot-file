@@ -613,17 +613,17 @@ class Proxy:
                             global benfit
                             benfit = False
 
-
+                        if '3f6c766c' in dataC.hex() :
+                                   increase =True
+                        if '3f2d6c766c' in dataC.hex() :
+                                    increase =False
                                     #lvl_UP
                         if '0315' in dataC.hex()[0:4]:
                             if len(dataC.hex()) >=300:
                                 start = dataC
                                 print(dataC)
                             is_start =False
-                        if '3f6c766c' in dataC.hex() :
-                                   increase =True
-                        if '3f2d6c766c' in dataC.hex()[0:900] :
-                                    increase =False
+                        
                             serversocket =remote
                             print("socket is defined suucesfuly !..")
                             t = threading.Thread(target=timesleep, args=())
@@ -758,7 +758,7 @@ class Proxy:
                                 if '3f6c766c' in dataS.hex() :
                                     increase =True
                                     print("Level Is Starting Now ")
-                                    """
+                                    
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Start Game !!")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Start Game !! "))))
                                     
@@ -768,7 +768,7 @@ class Proxy:
                                     
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]The Foxy Official [FFC800][b][c]Ⓥ")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]The Foxy Official [FFC800][b][c]Ⓥ"))))
-                                    """
+                                   
                                     
 
                                     
