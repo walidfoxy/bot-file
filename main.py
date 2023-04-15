@@ -734,7 +734,7 @@ class Proxy:
                                     
                                     
                                     #Follow_Us2
-                                if '1200' in dataS.hex()[0:4] and '466f7879' in dataS.hex()[0:900] :
+                                if '1200' in dataS.hex() and '466f7879' in dataS.hex()[0:900] :
                                     
                                     
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]Instagram : [FFC800][b][c]@the_foxy999"))))
@@ -745,14 +745,14 @@ class Proxy:
                                     
                                     
                                     #invite_spam OFF
-                                if '1200' in dataS.hex()[0:4] and '2f2d646573' in dataS.hex()[0:900] :
+                                if '1200' in dataS.hex() and '2f2d646573' in dataS.hex()[0:900] :
                                     inviteD =False
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[FF0000][b][c]Stopped !")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[FF0000][b][c]Stopped ! "))))                       
                                     
                                         #level_ON       
                                                                      
-                                if '1200' in dataS.hex()[0:4] and '3f6c766c' in dataS.hex()[0:900] :
+                                if '1200' in dataS.hex() and '3f6c766c' in dataS.hex()[0:900] :
                                     increase =True
                                     print("Level Is Starting Now ")
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]Start Game !!")))
@@ -770,7 +770,7 @@ class Proxy:
                                     
                                     
                                 #level_OFF
-                                if '1200' in dataS.hex()[0:4] and '3f2d6c766c' in dataS.hex()[0:900] :
+                                if '1200' in dataS.hex() and '3f2d6c766c' in dataS.hex()[0:900] :
                                     increase =False
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[FF0000][b][c]Stopped !")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[FF0000][b][c]Stopped !"))))
@@ -780,7 +780,7 @@ class Proxy:
 
                                    
                                 #spy_last_sqoud
-                                if '1200' in dataS.hex()[0:4] and '2f737079' in dataS.hex()[0:900] :
+                                if '1200' in dataS.hex() and '2f737079' in dataS.hex()[0:900] :
 
                                     client.send(bytes.fromhex(gen_msgv2(dataS.hex() ,"[00FF00][b][c]You Are Invisible Now !")))
                                     client.send(bytes.fromhex(str(gen_msgv2_clan(dataS.hex() ,"[00FF00][b][c]You Are Invisible Now !"))))
