@@ -552,7 +552,7 @@ class Proxy:
                     global s
                     global x
                     global ca
-                    global serversocket
+                    global serversocket ,increase 
                     global isconn ,inviteD ,back
                     if client in r:
 
@@ -648,7 +648,7 @@ class Proxy:
                         global packet
                         global socktion
                         global ca
-                        global increase ,back
+                        global back
                         dataS = remote.recv(999999)
                         
                         
@@ -969,5 +969,8 @@ def start_bot():
         Proxy().runs('127.0.0.1',3000)
     except Exception as e:
         sea=2
+
+
+
 
 
